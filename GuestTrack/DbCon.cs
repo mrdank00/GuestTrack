@@ -53,22 +53,23 @@ namespace GuestTrack
                 }
             }
         }
-        public List<string> GetRoomList()
+        public List<Tuple<string, string>> GetRoomList()
         {
-            List<string> roomNames = new List<string>();
+            List<Tuple<string, string>> roomNames = new List<Tuple<string, string>>();
 
             using (SqlConnection connection = Guestcon())
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT room_number FROM Rooms", connection))
+                using (SqlCommand command = new SqlCommand("SELECT room_number, status FROM Rooms", connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             string roomNumber = reader.GetString(reader.GetOrdinal("room_number"));
-                            roomNames.Add(roomNumber);
+                            string roomStatus = reader.GetString(reader.GetOrdinal("status"));
+                            roomNames.Add(Tuple.Create( roomStatus,roomNumber));
                         }
                     }
                 }
@@ -78,6 +79,7 @@ namespace GuestTrack
 
             return roomNames;
         }
+
     }
 
 }

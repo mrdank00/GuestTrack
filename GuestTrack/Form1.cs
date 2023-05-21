@@ -42,7 +42,7 @@ namespace GuestTrack
             {
                 openForm = (Form)Activator.CreateInstance(formType);
                 openForm.MdiParent = this;
-                openForm.WindowState = FormWindowState.Maximized;
+                openForm.WindowState = FormWindowState.Normal;
                 openForm.StartPosition = FormStartPosition.CenterParent;
                 openForm.Show();
             }

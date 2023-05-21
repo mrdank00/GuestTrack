@@ -24,24 +24,32 @@ namespace GuestTrack
 
         private void frmReservationDashboard_Load(object sender, EventArgs e)
         {
-            //PopulateDates();
-       
-            List<string> roomList = dbManager.GetRoomList();
+            PopulateDates(dateTimePicker1.Value);
+        }
+        private void PopulateDates(DateTime exactDate)
+        {
 
-        
+
+            List<Tuple<string, string>> roomList = dbManager.GetRoomList();
+
+
+
             // Add date columns and populate rows
-            DateTime currentDate = DateTime.Today;
+            DateTime currentDate = exactDate;
             DateTime endDate = currentDate.AddDays(14);
             int columnCount = 2; // Starting column index for dates
-            foreach (string roomName in roomList)
+            foreach (Tuple<string, string> roomTuple in roomList)
             {
-                dataGridView1.Rows.Add("", roomName);
+                string status = roomTuple.Item1;
+                string roomName = roomTuple.Item2;
+                dataGridView1.Rows.Add(status, roomName);
             }
+
             // Add date columns dynamically
             while (currentDate <= endDate)
             {
                 DataGridViewTextBoxColumn dateColumn = new DataGridViewTextBoxColumn();
-                dateColumn.HeaderText = currentDate.ToString("yyyy-MMM-dd");
+                dateColumn.HeaderText = currentDate.ToString("ddd, dd-MMM-yy");
                 dateColumn.Name = currentDate.ToString("yyyyMMdd"); // Set a unique name for the column
 
                 // Add the date column to the DataGridView control
@@ -52,38 +60,6 @@ namespace GuestTrack
                 columnCount += 1;
             }
             LoadReservations();
-          
-        }
-        private void PopulateDates()
-        {
-
-          
-
-            //// Assuming you have a list of room names in the `roomNames` variable
-            //foreach (string roomName in roomNames)
-            //{
-            //    dataGridView1.Rows.Add(roomName);
-            //}
-
-            // Add date columns and populate rows
-            DateTime currentDate = DateTime.Today;
-            DateTime endDate = currentDate.AddDays(14);
-            int columnCount = 1; // Starting column index for dates
-
-            // Add date columns dynamically
-            while (currentDate <= endDate)
-            {
-                DataGridViewTextBoxColumn dateColumn = new DataGridViewTextBoxColumn();
-                dateColumn.HeaderText = currentDate.ToString("yyyy-MMM-dd");
-                dateColumn.Name = currentDate.ToString("yyyyMMdd"); // Set a unique name for the column
-
-                // Add the date column to the DataGridView control
-                dataGridView1.Columns.Insert(columnCount, dateColumn);
-
-                // Move to the next date
-                currentDate = currentDate.AddDays(1);
-                columnCount += 1;
-            }
         }
         private void HighlightDates(DateTime startDate, DateTime endDate, string roomName, string guestName)
         {
@@ -99,7 +75,7 @@ namespace GuestTrack
                     {
                       //  MessageBox.Show(roomName);
                         // Get the date from the column header text
-                        DateTime columnDate = DateTime.ParseExact(dataGridView1.Columns[columnIndex].HeaderText, "yyyy-MMM-dd", CultureInfo.InvariantCulture);
+                        DateTime columnDate = DateTime.ParseExact(dataGridView1.Columns[columnIndex].HeaderText, "ddd, dd-MMM-yy", CultureInfo.InvariantCulture);
                         DataGridViewCell cell = row.Cells[columnIndex];
                         cell.Style.BackColor = Color.White;
                         cell.Value = "";
@@ -157,13 +133,25 @@ namespace GuestTrack
         {
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                if (DateTime.TryParseExact(column.HeaderText, "yyyy-MMM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
+                if (DateTime.TryParseExact(column.HeaderText, "ddd, dd-MMM-yy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
                 {
                     DateTime shiftedDate = date.AddDays(shiftAmount);
-                    column.HeaderText = shiftedDate.ToString("yyyy-MMM-dd");
+                    column.HeaderText = shiftedDate.ToString("ddd, dd-MMM-yy");
                 }
             }
         }
+        private void SetAndShiftDateColumns(DateTime exactDate, int shiftAmount)
+        {
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                if (DateTime.TryParseExact(column.HeaderText, "ddd, dd-MMM-yy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
+                {
+                    DateTime shiftedDate = exactDate.AddDays(shiftAmount);
+                    column.HeaderText = exactDate.ToString("ddd, dd-MMM-yy");
+                }
+            }
+        }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -192,6 +180,17 @@ namespace GuestTrack
         {
             ShiftDateColumns(+7);
             LoadReservations();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            PopulateDates(dateTimePicker1.Value);
+
         }
     }
 
