@@ -35,16 +35,16 @@
             this.setupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomTypeSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.communicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sMSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.emailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -99,6 +99,27 @@
             this.roomTypeSetupToolStripMenuItem.Text = "Room Type Setup";
             this.roomTypeSetupToolStripMenuItem.Click += new System.EventHandler(this.roomTypeSetupToolStripMenuItem_Click);
             // 
+            // communicationsToolStripMenuItem
+            // 
+            this.communicationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sMSToolStripMenuItem,
+            this.emailToolStripMenuItem});
+            this.communicationsToolStripMenuItem.Name = "communicationsToolStripMenuItem";
+            this.communicationsToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
+            this.communicationsToolStripMenuItem.Text = "Communications";
+            // 
+            // sMSToolStripMenuItem
+            // 
+            this.sMSToolStripMenuItem.Name = "sMSToolStripMenuItem";
+            this.sMSToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.sMSToolStripMenuItem.Text = "SMS";
+            // 
+            // emailToolStripMenuItem
+            // 
+            this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
+            this.emailToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.emailToolStripMenuItem.Text = "Email";
+            // 
             // toolStrip1
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(50, 50);
@@ -117,6 +138,16 @@
             this.toolStrip1.Size = new System.Drawing.Size(800, 72);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(91, 69);
+            this.toolStripButton3.Text = "Guests Profiles ";
+            this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripButton1
             // 
@@ -138,15 +169,6 @@
             this.toolStripButton2.Text = "Reservation Screen";
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(91, 69);
-            this.toolStripButton3.Text = "Guests Profiles ";
-            this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripButton4
             // 
@@ -174,27 +196,6 @@
             this.toolStripButton6.Size = new System.Drawing.Size(93, 69);
             this.toolStripButton6.Text = "    Send Email    ";
             this.toolStripButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // communicationsToolStripMenuItem
-            // 
-            this.communicationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sMSToolStripMenuItem,
-            this.emailToolStripMenuItem});
-            this.communicationsToolStripMenuItem.Name = "communicationsToolStripMenuItem";
-            this.communicationsToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
-            this.communicationsToolStripMenuItem.Text = "Communications";
-            // 
-            // sMSToolStripMenuItem
-            // 
-            this.sMSToolStripMenuItem.Name = "sMSToolStripMenuItem";
-            this.sMSToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.sMSToolStripMenuItem.Text = "SMS";
-            // 
-            // emailToolStripMenuItem
-            // 
-            this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
-            this.emailToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.emailToolStripMenuItem.Text = "Email";
             // 
             // frmMain
             // 

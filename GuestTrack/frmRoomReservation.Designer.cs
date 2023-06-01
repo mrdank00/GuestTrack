@@ -45,21 +45,21 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cbCountry = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtemail = new System.Windows.Forms.TextBox();
             this.cbGuestName = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label20 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.cbchild = new System.Windows.Forms.NumericUpDown();
             this.label19 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.cbadult = new System.Windows.Forms.NumericUpDown();
             this.comboBox11 = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.cbroomname = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -74,12 +74,15 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.comboBox12 = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.comboBox12 = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -91,12 +94,16 @@
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbchild)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbadult)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,6 +124,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label33);
+            this.tabPage1.Controls.Add(this.label32);
             this.tabPage1.Controls.Add(this.label31);
             this.tabPage1.Controls.Add(this.textBox2);
             this.tabPage1.Controls.Add(this.cbAddress);
@@ -132,7 +141,7 @@
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.cbCountry);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.txtemail);
             this.tabPage1.Controls.Add(this.cbGuestName);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
@@ -256,6 +265,7 @@
             this.txtContact.Name = "txtContact";
             this.txtContact.Size = new System.Drawing.Size(251, 25);
             this.txtContact.TabIndex = 6;
+            this.txtContact.Leave += new System.EventHandler(this.txtContact_Leave);
             // 
             // label4
             // 
@@ -286,13 +296,13 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Country";
             // 
-            // textBox1
+            // txtemail
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.textBox1.Location = new System.Drawing.Point(92, 171);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(251, 25);
-            this.textBox1.TabIndex = 2;
+            this.txtemail.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.txtemail.Location = new System.Drawing.Point(92, 171);
+            this.txtemail.Name = "txtemail";
+            this.txtemail.Size = new System.Drawing.Size(251, 25);
+            this.txtemail.TabIndex = 2;
             // 
             // cbGuestName
             // 
@@ -316,16 +326,16 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label20);
-            this.tabPage2.Controls.Add(this.numericUpDown2);
+            this.tabPage2.Controls.Add(this.cbchild);
             this.tabPage2.Controls.Add(this.label19);
-            this.tabPage2.Controls.Add(this.numericUpDown1);
+            this.tabPage2.Controls.Add(this.cbadult);
             this.tabPage2.Controls.Add(this.comboBox11);
             this.tabPage2.Controls.Add(this.label18);
             this.tabPage2.Controls.Add(this.comboBox10);
             this.tabPage2.Controls.Add(this.label17);
             this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.textBox4);
-            this.tabPage2.Controls.Add(this.comboBox9);
+            this.tabPage2.Controls.Add(this.cbroomname);
             this.tabPage2.Controls.Add(this.label15);
             this.tabPage2.Controls.Add(this.comboBox8);
             this.tabPage2.Controls.Add(this.label14);
@@ -359,13 +369,13 @@
             this.label20.Text = "Child";
             this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // numericUpDown2
+            // cbchild
             // 
-            this.numericUpDown2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown2.Location = new System.Drawing.Point(257, 255);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 25);
-            this.numericUpDown2.TabIndex = 32;
+            this.cbchild.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbchild.Location = new System.Drawing.Point(257, 255);
+            this.cbchild.Name = "cbchild";
+            this.cbchild.Size = new System.Drawing.Size(120, 25);
+            this.cbchild.TabIndex = 32;
             // 
             // label19
             // 
@@ -378,13 +388,23 @@
             this.label19.Text = "Adult";
             this.label19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // numericUpDown1
+            // cbadult
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(37, 255);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 25);
-            this.numericUpDown1.TabIndex = 30;
+            this.cbadult.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbadult.Location = new System.Drawing.Point(37, 255);
+            this.cbadult.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.cbadult.Name = "cbadult";
+            this.cbadult.Size = new System.Drawing.Size(120, 25);
+            this.cbadult.TabIndex = 30;
+            this.cbadult.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // comboBox11
             // 
@@ -441,17 +461,18 @@
             this.textBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.textBox4.Location = new System.Drawing.Point(630, 189);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(140, 25);
             this.textBox4.TabIndex = 24;
             // 
-            // comboBox9
+            // cbroomname
             // 
-            this.comboBox9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Location = new System.Drawing.Point(453, 189);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(156, 25);
-            this.comboBox9.TabIndex = 23;
+            this.cbroomname.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.cbroomname.FormattingEnabled = true;
+            this.cbroomname.Location = new System.Drawing.Point(453, 189);
+            this.cbroomname.Name = "cbroomname";
+            this.cbroomname.Size = new System.Drawing.Size(156, 25);
+            this.cbroomname.TabIndex = 23;
             // 
             // label15
             // 
@@ -492,6 +513,7 @@
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(196, 25);
             this.comboBox7.TabIndex = 19;
+            this.comboBox7.SelectedIndexChanged += new System.EventHandler(this.comboBox7_SelectedIndexChanged);
             // 
             // label13
             // 
@@ -578,12 +600,11 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.tabControl2);
             this.tabPage3.Controls.Add(this.label29);
             this.tabPage3.Controls.Add(this.label30);
             this.tabPage3.Controls.Add(this.label28);
             this.tabPage3.Controls.Add(this.label27);
-            this.tabPage3.Controls.Add(this.comboBox12);
-            this.tabPage3.Controls.Add(this.label26);
             this.tabPage3.Controls.Add(this.comboBox1);
             this.tabPage3.Controls.Add(this.label25);
             this.tabPage3.Controls.Add(this.label24);
@@ -597,6 +618,63 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Payments(Deposits)";
             this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Enter += new System.EventHandler(this.tabPage3_Enter);
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Location = new System.Drawing.Point(92, 207);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(640, 140);
+            this.tabControl2.TabIndex = 26;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.comboBox12);
+            this.tabPage4.Controls.Add(this.label26);
+            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(632, 110);
+            this.tabPage4.TabIndex = 0;
+            this.tabPage4.Text = "Deposit";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // comboBox12
+            // 
+            this.comboBox12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.comboBox12.FormattingEnabled = true;
+            this.comboBox12.Items.AddRange(new object[] {
+            "Cash",
+            "Momo",
+            "Bank Transfer"});
+            this.comboBox12.Location = new System.Drawing.Point(336, 53);
+            this.comboBox12.Name = "comboBox12";
+            this.comboBox12.Size = new System.Drawing.Size(238, 25);
+            this.comboBox12.TabIndex = 21;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(334, 33);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(101, 17);
+            this.label26.TabIndex = 20;
+            this.label26.Text = "Payment Mode";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 26);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(632, 110);
+            this.tabPage5.TabIndex = 1;
+            this.tabPage5.Text = "Payment";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // label29
             // 
@@ -637,29 +715,6 @@
             this.label27.Size = new System.Drawing.Size(53, 17);
             this.label27.TabIndex = 22;
             this.label27.Text = "Date-In";
-            // 
-            // comboBox12
-            // 
-            this.comboBox12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.comboBox12.FormattingEnabled = true;
-            this.comboBox12.Items.AddRange(new object[] {
-            "Guest",
-            "Customer"});
-            this.comboBox12.Location = new System.Drawing.Point(400, 161);
-            this.comboBox12.Name = "comboBox12";
-            this.comboBox12.Size = new System.Drawing.Size(238, 25);
-            this.comboBox12.TabIndex = 21;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(398, 141);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(101, 17);
-            this.label26.TabIndex = 20;
-            this.label26.Text = "Payment Mode";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // comboBox1
             // 
@@ -733,6 +788,7 @@
             this.Cancel.TabIndex = 1;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
+            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // button2
             // 
@@ -778,6 +834,26 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Reservation";
             // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label32.Location = new System.Drawing.Point(89, 151);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(63, 17);
+            this.label32.TabIndex = 18;
+            this.label32.Text = "Guest ID:";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label33.Location = new System.Drawing.Point(158, 151);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(19, 17);
+            this.label33.TabIndex = 19;
+            this.label33.Text = "id";
+            // 
             // frmRoomReservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -789,6 +865,7 @@
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmRoomReservation";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reservation";
             this.Load += new System.EventHandler(this.frmRoomReservation_Load);
             this.tabControl1.ResumeLayout(false);
@@ -796,10 +873,13 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbchild)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbadult)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -819,7 +899,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtemail;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtContact;
         private System.Windows.Forms.Label label4;
@@ -841,7 +921,7 @@
         private System.Windows.Forms.DateTimePicker dpCheckin;
         private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox9;
+        private System.Windows.Forms.ComboBox cbroomname;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox8;
         private System.Windows.Forms.Label label14;
@@ -850,9 +930,9 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown cbchild;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown cbadult;
         private System.Windows.Forms.ComboBox comboBox11;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox comboBox10;
@@ -871,5 +951,10 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
     }
 }

@@ -192,6 +192,12 @@ namespace GuestTrack
             PopulateDates(dateTimePicker1.Value);
 
         }
+
+        private void addReservationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRoomReservation frm= new frmRoomReservation();
+            frm.ShowDialog(this);   
+        }
     }
 
 }

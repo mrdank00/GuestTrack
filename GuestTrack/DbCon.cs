@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
-
+using System.Windows.Forms;
 namespace GuestTrack
 {
   
@@ -79,6 +79,37 @@ namespace GuestTrack
 
             return roomNames;
         }
+        public void LoadComboBoxValues(string query, ComboBox comboBox, string displayMember)
+        {
+            using (SqlConnection connection = Guestcon())
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        comboBox.Items.Add(reader[displayMember].ToString());
+                        
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+
 
     }
 
