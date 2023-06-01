@@ -42,7 +42,7 @@ namespace GuestTrack
             {
                 openForm = (Form)Activator.CreateInstance(formType);
                 openForm.MdiParent = this;
-                openForm.WindowState = FormWindowState.Normal;
+                openForm.WindowState = FormWindowState.Maximized;
                 openForm.StartPosition = FormStartPosition.CenterParent;
                 openForm.Show();
             }
@@ -70,6 +70,11 @@ namespace GuestTrack
         private void roomToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenForm(typeof(frmCreateRooms));
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            OpenForm(typeof(frmGuestProfiles));
         }
     }
 }
