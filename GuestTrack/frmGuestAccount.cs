@@ -31,8 +31,8 @@ namespace GuestTrack
 
         private void frmGuestAccount_Load(object sender, EventArgs e)
         {
-            string message = $"Row Header: {CellContent}\nRow Header: {Roomno}\nColumn Header: {Date}";
-            MessageBox.Show(message, "Cell Information");
+            //string message = $"Row Header: {CellContent}\nRow Header: {Roomno}\nColumn Header: {Date}";
+            //MessageBox.Show(message, "Cell Information");
             Account account = new Account();
             account.Guestname = CellContent;
 
@@ -40,9 +40,13 @@ namespace GuestTrack
             DataTable bookings = account.GetBookingsByDateAndRoom();
 
             // Update label text with value from a specific cell in the DataTable
-            label1.Text = bookings.Rows[0][5].ToString();
-            label3.Text = bookings.Rows[0][6].ToString();
-            lblroom.Text = bookings.Rows[0][7].ToString();
+            if (bookings.Rows.Count>0)
+            {
+                label1.Text = bookings.Rows[0][5].ToString();
+                label3.Text = bookings.Rows[0][6].ToString();
+                lblroom.Text = bookings.Rows[0][7].ToString();
+            }
+           
 
             // Bind the bookings data to the DataGridView
             dataGridView1.DataSource = bookings;

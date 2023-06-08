@@ -63,8 +63,10 @@ namespace GuestTrack
             }
             LoadReservations();
         }
-        private void HighlightDates(DateTime startDate, DateTime endDate, string roomName, string guestName,int reservid)
+        private void HighlightDates(DateTime startDate, DateTime endDate, string roomName, string guestName, int reservid)
         {
+            Reservation reservation = new Reservation();
+
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 // Check if the row corresponds to the specified room name
@@ -84,15 +86,14 @@ namespace GuestTrack
                         // Check if the date is within the specified range
                         if (columnDate >= startDate && columnDate <= endDate)
                         {
-                            // Set the cell's background color based on the reservation status
-                            //string reservationStatus = GetReservationStatus(row.Index); // Fetch reservation status from the database based on the row index or any other identifier
-                            //Color color = GetColorCode(reservationStatus); // Fetch the color code based on the reservation status from the ReservationStatus table or any other source
-                            Color color = Color.Red;
+                            string reservationStatus = reservation.GetReservationStatus(reservid); // Fetch reservation status from the database based on the reservation ID
+                            Color color = reservation.GetColorCode(reservationStatus); // Fetch the color code based on the reservation status
+
                             cell.Style.BackColor = color;
 
                             if (row.Cells[1].Value.ToString() == roomName)
                             {
-                                cell.Value =  guestName ;
+                                cell.Value = guestName;
                                 cell.Tag = reservid;
                             }
                         }
@@ -100,6 +101,7 @@ namespace GuestTrack
                 }
             }
         }
+
 
 
         private void LoadReservations()

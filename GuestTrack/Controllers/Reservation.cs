@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -153,7 +154,7 @@ namespace GuestTrack.Controllers
             return nexreservationId;
         }
 
-        public string GetReservationStatus(int rowIndex)
+        public string GetReservationStatus(int resvid)
         {
             string reservationStatus = string.Empty;
 
@@ -161,9 +162,9 @@ namespace GuestTrack.Controllers
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT ReservationStatus FROM Reservation WHERE RowIndex = @RowIndex", connection))
+                using (SqlCommand command = new SqlCommand("SELECT Status FROM Reservations WHERE reservation_id = @resvid", connection))
                 {
-                    command.Parameters.AddWithValue("@RowIndex", rowIndex);
+                    command.Parameters.AddWithValue("@resvid", resvid);
 
                     object result = command.ExecuteScalar();
                     if (result != null && result != DBNull.Value)
@@ -177,28 +178,30 @@ namespace GuestTrack.Controllers
         }
 
         // Get the color code associated with a specific reservation status
-        public string GetColorCode(string reservationStatus)
+        public Color GetColorCode(string reservationStatus)
         {
-            string colorCode = string.Empty;
+            Color color = Color.White; // Default color
 
             using (SqlConnection connection = dbManager.Guestcon())
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT ColorCode FROM ReservationStatus WHERE ReservationStatus = @ReservationStatus", connection))
+                using (SqlCommand command = new SqlCommand("SELECT ColorCode FROM ReservationStatus WHERE statusname = @ReservationStatus", connection))
                 {
                     command.Parameters.AddWithValue("@ReservationStatus", reservationStatus);
 
                     object result = command.ExecuteScalar();
                     if (result != null && result != DBNull.Value)
                     {
-                        colorCode = result.ToString();
+                        string colorCode = result.ToString();
+                        color = ColorTranslator.FromHtml(colorCode);
                     }
                 }
             }
 
-            return colorCode;
+            return color;
         }
+
         // Additional properties
 
     }
