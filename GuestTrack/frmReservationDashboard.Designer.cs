@@ -38,12 +38,12 @@
             this.addReservationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkInGuestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.checkInGuestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -91,6 +91,7 @@
             this.dataGridView1.ShowRowErrors = false;
             this.dataGridView1.Size = new System.Drawing.Size(799, 408);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.ColumnNameChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridView1_ColumnNameChanged);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
@@ -141,6 +142,12 @@
             this.cancelBookingToolStripMenuItem.Name = "cancelBookingToolStripMenuItem";
             this.cancelBookingToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.cancelBookingToolStripMenuItem.Text = "Cancel booking";
+            // 
+            // checkInGuestToolStripMenuItem
+            // 
+            this.checkInGuestToolStripMenuItem.Name = "checkInGuestToolStripMenuItem";
+            this.checkInGuestToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.checkInGuestToolStripMenuItem.Text = "CheckIn Guest";
             // 
             // button1
             // 
@@ -194,12 +201,6 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(140, 20);
             this.dateTimePicker1.TabIndex = 5;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // checkInGuestToolStripMenuItem
-            // 
-            this.checkInGuestToolStripMenuItem.Name = "checkInGuestToolStripMenuItem";
-            this.checkInGuestToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.checkInGuestToolStripMenuItem.Text = "CheckIn Guest";
             // 
             // frmReservationDashboard
             // 

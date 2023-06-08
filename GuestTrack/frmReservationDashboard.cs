@@ -63,7 +63,7 @@ namespace GuestTrack
             }
             LoadReservations();
         }
-        private void HighlightDates(DateTime startDate, DateTime endDate, string roomName, string guestName)
+        private void HighlightDates(DateTime startDate, DateTime endDate, string roomName, string guestName,int reservid)
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
@@ -93,6 +93,7 @@ namespace GuestTrack
                             if (row.Cells[1].Value.ToString() == roomName)
                             {
                                 cell.Value =  guestName ;
+                                cell.Tag = reservid;
                             }
                         }
                     }
@@ -104,7 +105,7 @@ namespace GuestTrack
         private void LoadReservations()
         {
           
-            string query = "SELECT check_in_date, check_out_date, roomname, guestname FROM Reservations";
+            string query = "SELECT check_in_date, check_out_date, roomname, guestname,reservation_id FROM Reservations";
 
             using (SqlConnection connection = dbManager.Guestcon())
             {
@@ -120,9 +121,10 @@ namespace GuestTrack
                         DateTime reservationDateOut = reader.GetDateTime(1);
                         string roomName = reader.GetString(2);
                         string guestName = reader.GetString(3);
+                        int reservatid = reader.GetInt32(4);
                       
                         // Call the HighlightDates method with the retrieved date and room
-                        HighlightDates(reservationDateIn, reservationDateOut, roomName, guestName);
+                        HighlightDates(reservationDateIn, reservationDateOut, roomName, guestName,reservatid);
                     }
 
                     reader.Close();
@@ -253,6 +255,18 @@ namespace GuestTrack
                     // Handle the case where the column header cannot be parsed as a valid DateTime
                     //MessageBox.Show("Invalid column header format.", "Error");
                 }
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewCell clickedCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+            if (clickedCell.Tag != null)
+            {
+                string secretReservationId = clickedCell.Tag.ToString();
+                MessageBox.Show(secretReservationId);
+                // Do something with the secretReservationId
             }
         }
     }
