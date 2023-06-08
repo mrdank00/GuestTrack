@@ -76,5 +76,12 @@ namespace GuestTrack
         {
             OpenForm(typeof(frmGuestProfiles));
         }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            frmHouselistReports houselistReports = new frmHouselistReports();
+            houselistReports.ShowDialog();
+
+        }
     }
 }

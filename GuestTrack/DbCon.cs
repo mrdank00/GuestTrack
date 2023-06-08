@@ -69,7 +69,7 @@ namespace GuestTrack
                         {
                             string roomNumber = reader.GetString(reader.GetOrdinal("room_number"));
                             string roomStatus = reader.GetString(reader.GetOrdinal("status"));
-                            roomNames.Add(Tuple.Create( roomStatus,roomNumber));
+                            roomNames.Add(Tuple.Create(roomStatus, roomNumber));
                         }
                     }
                 }

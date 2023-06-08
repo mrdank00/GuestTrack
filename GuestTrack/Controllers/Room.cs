@@ -73,7 +73,7 @@ namespace GuestTrack.Controllers
         }
 
 
-        public static Room GetRoomById(int roomId)
+        public static Room GetRoomByName(string roomName)
         {
             Room room = null;
 
@@ -81,10 +81,10 @@ namespace GuestTrack.Controllers
             {
                 connection.Open();
 
-                string selectQuery = "SELECT * FROM Rooms WHERE room_id = @RoomId";
+                string selectQuery = "SELECT * FROM Rooms WHERE roomname = @RoomId";
                 using (SqlCommand command = new SqlCommand(selectQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@RoomId", roomId);
+                    command.Parameters.AddWithValue("@RoomId", roomName);
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -175,7 +175,69 @@ namespace GuestTrack.Controllers
                 }
             }
         }
+        public static List<Room> GetAllRooms()
+        {
+            List<Room> rooms = new List<Room>();
+
+            using (SqlConnection connection = dbManager.Guestcon())
+            {
+                connection.Open();
+
+                string selectQuery = "SELECT * FROM Rooms";
+                using (SqlCommand command = new SqlCommand(selectQuery, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Room room = new Room(
+                                reader.GetInt32(reader.GetOrdinal("room_id")),
+                                reader.GetInt32(reader.GetOrdinal("hotel_id")),
+                                reader.GetString(reader.GetOrdinal("room_number")),
+                                reader.GetInt32(reader.GetOrdinal("room_type_id")),
+                                reader.GetString(reader.GetOrdinal("availability_status")),
+                                reader.IsDBNull(reader.GetOrdinal("price")) ? null : (decimal?)reader.GetDecimal(reader.GetOrdinal("price")),
+                                reader.IsDBNull(reader.GetOrdinal("Roomname")) ? null : reader.GetString(reader.GetOrdinal("Roomname")),
+                                reader.IsDBNull(reader.GetOrdinal("status")) ? null : reader.GetString(reader.GetOrdinal("status")),
+                                reader.IsDBNull(reader.GetOrdinal("roomtype")) ? null : reader.GetString(reader.GetOrdinal("roomtype"))
+                            );
+
+                            rooms.Add(room);
+                        }
+                    }
+                }
+            }
+
+            return rooms;
+        }
+
+        //public List<Tuple<string, string>> GetRoomList()
+        //{
+        //    List<Tuple<string, string>> roomNames = new List<Tuple<string, string>>();
+
+        //    using (SqlConnection connection = dbManager.Guestcon())
+        //    {
+        //        connection.Open();
+
+        //        using (SqlCommand command = new SqlCommand("SELECT room_number, status FROM Rooms", connection))
+        //        {
+        //            using (SqlDataReader reader = command.ExecuteReader())
+        //            {
+        //                while (reader.Read())
+        //                {
+        //                    string roomNumber = reader.GetString(reader.GetOrdinal("room_number"));
+        //                    string roomStatus = reader.GetString(reader.GetOrdinal("status"));
+        //                    roomNames.Add(Tuple.Create(roomStatus, roomNumber));
+        //                }
+        //            }
+        //        }
+
+        //        connection.Close();
+        //    }
+
+        //    return roomNames;
+        //}
+
+
     }
-
-
 }

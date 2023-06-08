@@ -26,6 +26,8 @@ namespace GuestTrack.Controllers
         public string IDType { get; set; }
         public string IDNumber { get; set; }
 
+        public Guest() { }
+
         public Guest(int guestid, string name, string contact, string email, string address, string nationality,
             string specialRequirements, DateTime dob, string idType, string idNumber)
         {

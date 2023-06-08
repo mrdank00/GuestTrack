@@ -9,18 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
+using GuestTrack.Controllers;
+using System.Runtime.Remoting.Messaging;
 
 namespace GuestTrack
 {
     public partial class frmReservationDashboard : Form
     {
         DatabaseManager dbManager = new DatabaseManager();
-
+        
         public frmReservationDashboard()
         {
             InitializeComponent();
             dataGridView1.RowTemplate.Height = 50;
         }
+       
 
         private void frmReservationDashboard_Load(object sender, EventArgs e)
         {
@@ -28,7 +31,6 @@ namespace GuestTrack
         }
         private void PopulateDates(DateTime exactDate)
         {
-
 
             List<Tuple<string, string>> roomList = dbManager.GetRoomList();
 
@@ -65,41 +67,39 @@ namespace GuestTrack
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-               
                 // Check if the row corresponds to the specified room name
                 if (row.Cells[1].Value != null && row.Cells[1].Value.ToString() == roomName)
                 {
-                   
+                    endDate = endDate.AddDays(-1);
+
                     // Iterate over the date columns
                     for (int columnIndex = 2; columnIndex < dataGridView1.Columns.Count; columnIndex++)
                     {
-                      //  MessageBox.Show(roomName);
                         // Get the date from the column header text
                         DateTime columnDate = DateTime.ParseExact(dataGridView1.Columns[columnIndex].HeaderText, "ddd, dd-MMM-yy", CultureInfo.InvariantCulture);
                         DataGridViewCell cell = row.Cells[columnIndex];
                         cell.Style.BackColor = Color.White;
                         cell.Value = "";
-                        
+
                         // Check if the date is within the specified range
                         if (columnDate >= startDate && columnDate <= endDate)
                         {
-                           
-                            // Get the cell corresponding to the room and date
-                           
-
-                            // Set the cell's background color to red
-                            cell.Style.BackColor = Color.IndianRed;
+                            // Set the cell's background color based on the reservation status
+                            //string reservationStatus = GetReservationStatus(row.Index); // Fetch reservation status from the database based on the row index or any other identifier
+                            //Color color = GetColorCode(reservationStatus); // Fetch the color code based on the reservation status from the ReservationStatus table or any other source
+                            Color color = Color.Red;
+                            cell.Style.BackColor = color;
 
                             if (row.Cells[1].Value.ToString() == roomName)
                             {
-                                cell.Value = "<" + guestName + ">";
-
+                                cell.Value =  guestName ;
                             }
                         }
                     }
                 }
             }
         }
+
 
         private void LoadReservations()
         {
@@ -192,11 +192,68 @@ namespace GuestTrack
             PopulateDates(dateTimePicker1.Value);
 
         }
-
+        private DataGridViewCell storedCell;
         private void addReservationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRoomReservation frm= new frmRoomReservation();
-            frm.ShowDialog(this);   
+            frmRoomReservation frm = new frmRoomReservation();
+            frm.ShowDialog();
+
+
+        }
+
+        private void ShowAccountDialog(string roomNo,DateTime date,string cellcontent)
+        {
+            frmGuestAccount frm = new frmGuestAccount(roomNo,date,cellcontent);
+            frm.ShowDialog();
+        }
+
+
+
+
+        private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                DataGridView.HitTestInfo hitTestInfo = dataGridView1.HitTest(e.X, e.Y);
+                if (hitTestInfo.Type == DataGridViewHitTestType.Cell)
+                {
+                    // Store the clicked cell information
+                    storedCell = dataGridView1.Rows[hitTestInfo.RowIndex].Cells[hitTestInfo.ColumnIndex];
+                }
+            }
+        }
+
+        private void accountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (storedCell != null)
+            {
+                // Get the content of the stored cell
+                string cellData = storedCell.Value.ToString();
+
+                // Get the row header value (leftmost cell value)
+                string rowHeader = storedCell.OwningRow.Cells[1].Value.ToString();
+
+                // Get the column header value
+                string columnHeader = storedCell.OwningColumn.HeaderText;
+                DateTime columnDate;
+
+                // Parse the column header as a DateTime object
+                if (DateTime.TryParseExact(columnHeader, "ddd, dd-MMM-yy", CultureInfo.InvariantCulture, DateTimeStyles.None, out columnDate))
+                {
+                    // Show the content, row header, and column header in a MessageBox
+                    //string message = $"Cell Content: {cellData}\nRow Header: {rowHeader}\nColumn Header: {columnHeader}";
+                    //   MessageBox.Show(message, "Cell Information");
+
+                    // Pass the row header and column header to the ShowAccountDialog method
+                    ShowAccountDialog(rowHeader, columnDate,cellData);
+                }
+                else
+                {
+                    // Handle the case where the column header cannot be parsed as a valid DateTime
+                    //MessageBox.Show("Invalid column header format.", "Error");
+                }
+            }
         }
     }
 

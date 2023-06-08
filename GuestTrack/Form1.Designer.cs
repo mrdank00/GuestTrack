@@ -178,6 +178,7 @@
             this.toolStripButton4.Size = new System.Drawing.Size(96, 69);
             this.toolStripButton4.Text = "House Activities";
             this.toolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripButton5
             // 

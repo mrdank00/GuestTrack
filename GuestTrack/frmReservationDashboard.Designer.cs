@@ -43,6 +43,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.checkInGuestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -92,6 +93,7 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.ColumnNameChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridView1_ColumnNameChanged);
+            this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
             // 
             // Column1
             // 
@@ -115,9 +117,10 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addReservationToolStripMenuItem,
             this.accountToolStripMenuItem,
-            this.cancelBookingToolStripMenuItem});
+            this.cancelBookingToolStripMenuItem,
+            this.checkInGuestToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 92);
             // 
             // addReservationToolStripMenuItem
             // 
@@ -131,6 +134,7 @@
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
             this.accountToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.accountToolStripMenuItem.Text = "Account";
+            this.accountToolStripMenuItem.Click += new System.EventHandler(this.accountToolStripMenuItem_Click);
             // 
             // cancelBookingToolStripMenuItem
             // 
@@ -191,6 +195,12 @@
             this.dateTimePicker1.TabIndex = 5;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
+            // checkInGuestToolStripMenuItem
+            // 
+            this.checkInGuestToolStripMenuItem.Name = "checkInGuestToolStripMenuItem";
+            this.checkInGuestToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.checkInGuestToolStripMenuItem.Text = "CheckIn Guest";
+            // 
             // frmReservationDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,5 +235,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.ToolStripMenuItem checkInGuestToolStripMenuItem;
     }
 }
