@@ -193,7 +193,7 @@ namespace GuestTrack.Controllers
             {
                 connection.Open();
 
-                string query = "SELECT date,ref,tranxtype,debit,credit,guestname,guestid,roomname FROM GuestLedger WHERE guestname=@gname";
+                string query = "SELECT date,ref,tranxtype,debit,credit,guestname,guestid,roomname FROM GuestLedger WHERE reservation_id=@gname";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@gname", Guestname);
             //    command.Parameters.AddWithValue("@date", Date.Date);

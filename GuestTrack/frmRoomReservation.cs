@@ -59,6 +59,7 @@ namespace GuestTrack
                 {
                     try
                     {
+                       
                         guest();
                         reserve();
                         booking();
@@ -119,7 +120,7 @@ namespace GuestTrack
             string reservationtype = comboBox8.Text;
             int adult = int.Parse(cbadult.Value.ToString());
             int children = int.Parse(cbchild.Value.ToString());
-
+            //var status = "C";
             Reservation reservation = new Reservation();
            
             reservation.HotelId = hotelId;
@@ -132,12 +133,10 @@ namespace GuestTrack
             reservation.GuestName = guestName;
             reservation.Adult = adult;
             reservation.Children = children;
+            reservation.status = children;
 
             reservation.InsertReservation();
            
-
-
-
         }
         private void booking()
         {

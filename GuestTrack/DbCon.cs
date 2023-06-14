@@ -14,6 +14,7 @@ namespace GuestTrack
     public class DatabaseManager
     {
         private readonly string connectionString;
+        public SqlTransaction tranx;
 
         public DatabaseManager()
         {

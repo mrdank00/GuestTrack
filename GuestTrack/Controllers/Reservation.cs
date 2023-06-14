@@ -26,6 +26,7 @@ namespace GuestTrack.Controllers
             public int ReservationTypeId { get; set; }
             public int Adult { get; set; }
             public int Children { get; set; }
+            public int status { get; set; }
 
             public Reservation() { }    
 
@@ -52,8 +53,8 @@ namespace GuestTrack.Controllers
                 
                 using (SqlConnection connection = dbManager.Guestcon())
                 {
-                    string insertQuery = @"INSERT INTO Reservations ( hotel_id, room_id, guest_id, check_in_date, check_out_date,  RoomName, Guestname, ReservationType, Adult, Children) 
-                                   VALUES ( @HotelId, @RoomId, @GuestId, @CheckInDate, @CheckOutDate,  @RoomName, @GuestName, @ReservationType, @Adult, @Children)";
+                    string insertQuery = @"INSERT INTO Reservations ( hotel_id, room_id, guest_id, check_in_date, check_out_date,  RoomName, Guestname, ReservationType, Adult, Children,status) 
+                                   VALUES ( @HotelId, @RoomId, @GuestId, @CheckInDate, @CheckOutDate,  @RoomName, @GuestName, @ReservationType, @Adult, @Children,@status)";
 
                     using (SqlCommand command = new SqlCommand(insertQuery, connection))
                     {
@@ -68,6 +69,7 @@ namespace GuestTrack.Controllers
                         command.Parameters.AddWithValue("@ReservationType", ReservationType);
                         command.Parameters.AddWithValue("@Adult", Adult);
                         command.Parameters.AddWithValue("@Children", Children);
+                        command.Parameters.AddWithValue("@status", status);
                   
                     try
                         {
@@ -154,9 +156,9 @@ namespace GuestTrack.Controllers
             return nexreservationId;
         }
 
-        public string GetReservationStatus(int resvid)
+        public int GetReservationStatus(int resvid)
         {
-            string reservationStatus = string.Empty;
+            int reservationStatus = 0;
 
             using (SqlConnection connection = dbManager.Guestcon())
             {
@@ -169,7 +171,7 @@ namespace GuestTrack.Controllers
                     object result = command.ExecuteScalar();
                     if (result != null && result != DBNull.Value)
                     {
-                        reservationStatus = result.ToString();
+                        reservationStatus = Convert.ToInt32(result);
                     }
                 }
             }
@@ -177,8 +179,9 @@ namespace GuestTrack.Controllers
             return reservationStatus;
         }
 
+
         // Get the color code associated with a specific reservation status
-        public Color GetColorCode(string reservationStatus)
+        public Color GetColorCode(int reservationStatus)
         {
             Color color = Color.White; // Default color
 
@@ -186,7 +189,7 @@ namespace GuestTrack.Controllers
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT ColorCode FROM ReservationStatus WHERE statusname = @ReservationStatus", connection))
+                using (SqlCommand command = new SqlCommand("SELECT ColorCode FROM ReservationStatus WHERE statusid = @ReservationStatus", connection))
                 {
                     command.Parameters.AddWithValue("@ReservationStatus", reservationStatus);
 

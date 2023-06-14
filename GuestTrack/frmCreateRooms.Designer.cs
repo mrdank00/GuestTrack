@@ -33,13 +33,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtRoomno = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbRoomtype = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtroomprice = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtRoomName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -95,13 +95,13 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Room Number";
             // 
-            // textBox2
+            // txtRoomno
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(227, 69);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(206, 25);
-            this.textBox2.TabIndex = 14;
+            this.txtRoomno.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRoomno.Location = new System.Drawing.Point(227, 69);
+            this.txtRoomno.Name = "txtRoomno";
+            this.txtRoomno.Size = new System.Drawing.Size(206, 25);
+            this.txtRoomno.TabIndex = 14;
             // 
             // label1
             // 
@@ -113,17 +113,14 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Room Type";
             // 
-            // comboBox1
+            // cbRoomtype
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Guest",
-            "Customer"});
-            this.comboBox1.Location = new System.Drawing.Point(46, 69);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(141, 25);
-            this.comboBox1.TabIndex = 20;
+            this.cbRoomtype.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.cbRoomtype.FormattingEnabled = true;
+            this.cbRoomtype.Location = new System.Drawing.Point(46, 69);
+            this.cbRoomtype.Name = "cbRoomtype";
+            this.cbRoomtype.Size = new System.Drawing.Size(141, 25);
+            this.cbRoomtype.TabIndex = 20;
             // 
             // label4
             // 
@@ -135,13 +132,13 @@
             this.label4.TabIndex = 22;
             this.label4.Text = "Price";
             // 
-            // textBox1
+            // txtroomprice
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(227, 123);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(117, 25);
-            this.textBox1.TabIndex = 21;
+            this.txtroomprice.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtroomprice.Location = new System.Drawing.Point(227, 123);
+            this.txtroomprice.Name = "txtroomprice";
+            this.txtroomprice.Size = new System.Drawing.Size(117, 25);
+            this.txtroomprice.TabIndex = 21;
             // 
             // label5
             // 
@@ -153,13 +150,13 @@
             this.label5.TabIndex = 24;
             this.label5.Text = "Room Name";
             // 
-            // textBox3
+            // txtRoomName
             // 
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(46, 123);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(141, 25);
-            this.textBox3.TabIndex = 23;
+            this.txtRoomName.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRoomName.Location = new System.Drawing.Point(46, 123);
+            this.txtRoomName.Name = "txtRoomName";
+            this.txtRoomName.Size = new System.Drawing.Size(141, 25);
+            this.txtRoomName.TabIndex = 23;
             // 
             // frmCreateRooms
             // 
@@ -167,15 +164,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(459, 431);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtRoomName);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.txtroomprice);
+            this.Controls.Add(this.cbRoomtype);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtRoomno);
             this.Controls.Add(this.label1);
             this.Name = "frmCreateRooms";
             this.Text = "frmCreateRooms";
@@ -195,12 +192,12 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtRoomno;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbRoomtype;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtroomprice;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtRoomName;
     }
 }

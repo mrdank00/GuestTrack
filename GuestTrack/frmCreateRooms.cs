@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using GuestTrack.Controllers;
 
 namespace GuestTrack
 {
@@ -26,43 +27,27 @@ namespace GuestTrack
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dbManager.Guestcon().State == ConnectionState.Closed)
-            {
-                dbManager.Guestcon().Open();
-            }
-
-            string insertQuery = "INSERT INTO Rooms (Name, description) VALUES (@Name, @description)";
-
-            using (SqlConnection connection = dbManager.Guestcon())
-            {
-                using (SqlCommand command = new SqlCommand(insertQuery, connection))
-                {
-                    // Add parameters to the command
-                    command.Parameters.AddWithValue("@Name", textBox1.Text);
-                    command.Parameters.AddWithValue("@description", textBox2.Text);
-
-                    // Open the connection if it's closed (optional)
-                    if (connection.State == ConnectionState.Closed)
-                    {
-                        connection.Open();
-                    }
-
-                    // Execute the query
-                    int rowsAffected = command.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        Display();
-                        MessageBox.Show("Success");
-                    }
-                }
-            }
+            Room room = new Room();
+            room.HotelId = 1;
+            room.RoomName = txtRoomName.Text;
+            room.RoomNumber = txtRoomno.Text;
+            room.RoomType = cbRoomtype.Text;
+            room.AvailabilityStatus = "Available";
+            room.Status = "Clean";
+            room.InsertRoom();
+            Display();
         }
         private void Display()
         {
             string selectQuery = "SELECT * FROM rooms";
             DataTable results = dbManager.ExecuteQuery(selectQuery);
-
             dataGridView1.DataSource = results;
+
+            string selectQuer = "SELECT name FROM roomtypes";
+            DataTable result1 = dbManager.ExecuteQuery(selectQuer);
+            cbRoomtype.DataSource = result1;
+            cbRoomtype.DisplayMember = "name";
+
 
         }
     }

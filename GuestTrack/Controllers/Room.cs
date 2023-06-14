@@ -16,39 +16,40 @@ namespace GuestTrack.Controllers
         public int RoomId { get; set; }
         public int HotelId { get; set; }
         public string RoomNumber { get; set; }
-        public int RoomTypeId { get; set; }
+        public int? RoomTypeId { get; set; }
         public string AvailabilityStatus { get; set; }
         public decimal? Price { get; set; }
         public string RoomName { get; set; }
         public string Status { get; set; }
         public string RoomType { get; set; }
 
-        public Room(int roomId, int hotelId, string roomNumber, int roomTypeId, string availabilityStatus, decimal? price, string roomName, string status, string roomType)
-        {
-            RoomId = roomId;
-            HotelId = hotelId;
-            RoomNumber = roomNumber;
-            RoomTypeId = roomTypeId;
-            AvailabilityStatus = availabilityStatus;
-            Price = price;
-            RoomName = roomName;
-            Status = status;
-            RoomType = roomType;
-        }
+        public Room () {}
+        //public Room(int roomId, int hotelId, string roomNumber, int roomTypeId, string availabilityStatus, decimal? price, string roomName, string status, string roomType)
+        //{
+        //    RoomId = roomId;
+        //    HotelId = hotelId;
+        //    RoomNumber = roomNumber;
+        //    RoomTypeId = roomTypeId;
+        //    AvailabilityStatus = availabilityStatus;
+        //    Price = price;
+        //    RoomName = roomName;
+        //    Status = status;
+        //    RoomType = roomType;
+        //}
 
+    
 
         public void InsertRoom()
         {
             using (SqlConnection connection = dbManager.Guestcon())
             {
-                string insertQuery = @"INSERT INTO Rooms (hotel_id, room_number, room_type_id, availability_status, price, Roomname, status, roomtype)
-                               VALUES (@HotelId, @RoomNumber, @RoomTypeId, @AvailabilityStatus, @Price, @RoomName, @Status, @RoomType)";
+                string insertQuery = @"INSERT INTO Rooms (hotel_id, room_number, availability_status, price, Roomname, status, roomtype)
+                               VALUES (@HotelId, @RoomNumber, @AvailabilityStatus, @Price, @RoomName, @Status, @RoomType)";
 
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
                 {
                     command.Parameters.AddWithValue("@HotelId", HotelId);
                     command.Parameters.AddWithValue("@RoomNumber", RoomNumber);
-                    command.Parameters.AddWithValue("@RoomTypeId", RoomTypeId);
                     command.Parameters.AddWithValue("@AvailabilityStatus", AvailabilityStatus);
                     command.Parameters.AddWithValue("@Price", Price.HasValue ? (object)Price.Value : (object)DBNull.Value);
                     command.Parameters.AddWithValue("@RoomName", RoomName ?? (object)DBNull.Value);
@@ -81,26 +82,26 @@ namespace GuestTrack.Controllers
             {
                 connection.Open();
 
-                string selectQuery = "SELECT * FROM Rooms WHERE roomname = @RoomId";
+                string selectQuery = "SELECT * FROM Rooms WHERE Roomname = @RoomName";
                 using (SqlCommand command = new SqlCommand(selectQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@RoomId", roomName);
+                    command.Parameters.AddWithValue("@RoomName", roomName);
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            room = new Room(
-                                reader.GetInt32(reader.GetOrdinal("room_id")),
-                                reader.GetInt32(reader.GetOrdinal("hotel_id")),
-                                reader.GetString(reader.GetOrdinal("room_number")),
-                                reader.GetInt32(reader.GetOrdinal("room_type_id")),
-                                reader.GetString(reader.GetOrdinal("availability_status")),
-                                reader.IsDBNull(reader.GetOrdinal("price")) ? null : (decimal?)reader.GetDecimal(reader.GetOrdinal("price")),
-                                reader.IsDBNull(reader.GetOrdinal("Roomname")) ? null : reader.GetString(reader.GetOrdinal("Roomname")),
-                                reader.IsDBNull(reader.GetOrdinal("status")) ? null : reader.GetString(reader.GetOrdinal("status")),
-                                reader.IsDBNull(reader.GetOrdinal("roomtype")) ? null : reader.GetString(reader.GetOrdinal("roomtype"))
-                            );
+                            room = new Room();
+                            room.RoomId = reader.GetInt32(reader.GetOrdinal("room_id"));
+                            room.HotelId = reader.GetInt32(reader.GetOrdinal("hotel_id"));
+                            room.RoomNumber = reader.GetString(reader.GetOrdinal("room_number"));
+                            room.RoomTypeId = reader.IsDBNull(reader.GetOrdinal("room_type_id")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("room_type_id"));
+
+                            room.AvailabilityStatus = reader.GetString(reader.GetOrdinal("availability_status"));
+                            room.Price = reader.IsDBNull(reader.GetOrdinal("price")) ? null : (decimal?)reader.GetDecimal(reader.GetOrdinal("price"));
+                            room.RoomName = reader.IsDBNull(reader.GetOrdinal("Roomname")) ? null : reader.GetString(reader.GetOrdinal("Roomname"));
+                            room.Status = reader.IsDBNull(reader.GetOrdinal("status")) ? null : reader.GetString(reader.GetOrdinal("status"));
+                            room.RoomType = reader.IsDBNull(reader.GetOrdinal("roomtype")) ? null : reader.GetString(reader.GetOrdinal("roomtype"));
                         }
                     }
                 }
@@ -108,6 +109,7 @@ namespace GuestTrack.Controllers
 
             return room;
         }
+
 
 
 
@@ -190,18 +192,26 @@ namespace GuestTrack.Controllers
                     {
                         while (reader.Read())
                         {
-                            Room room = new Room(
-                                reader.GetInt32(reader.GetOrdinal("room_id")),
-                                reader.GetInt32(reader.GetOrdinal("hotel_id")),
-                                reader.GetString(reader.GetOrdinal("room_number")),
-                                reader.GetInt32(reader.GetOrdinal("room_type_id")),
-                                reader.GetString(reader.GetOrdinal("availability_status")),
-                                reader.IsDBNull(reader.GetOrdinal("price")) ? null : (decimal?)reader.GetDecimal(reader.GetOrdinal("price")),
-                                reader.IsDBNull(reader.GetOrdinal("Roomname")) ? null : reader.GetString(reader.GetOrdinal("Roomname")),
-                                reader.IsDBNull(reader.GetOrdinal("status")) ? null : reader.GetString(reader.GetOrdinal("status")),
-                                reader.IsDBNull(reader.GetOrdinal("roomtype")) ? null : reader.GetString(reader.GetOrdinal("roomtype"))
-                            );
-
+                            //Room room = new Room(
+                            //reader.GetInt32(reader.GetOrdinal("room_id")),
+                            //reader.GetInt32(reader.GetOrdinal("hotel_id")),
+                            //reader.GetString(reader.GetOrdinal("room_number")),
+                            //reader.GetInt32(reader.GetOrdinal("room_type_id")),
+                            //reader.GetString(reader.GetOrdinal("availability_status")),
+                            //reader.IsDBNull(reader.GetOrdinal("price")) ? null : (decimal?)reader.GetDecimal(reader.GetOrdinal("price")),
+                            //reader.IsDBNull(reader.GetOrdinal("Roomname")) ? null : reader.GetString(reader.GetOrdinal("Roomname")),
+                            //reader.IsDBNull(reader.GetOrdinal("status")) ? null : reader.GetString(reader.GetOrdinal("status")),
+                            //reader.IsDBNull(reader.GetOrdinal("roomtype")) ? null : reader.GetString(reader.GetOrdinal("roomtype"))
+                            //);
+                            Room room = new Room();
+                            room.RoomId = reader.GetInt32(reader.GetOrdinal("room_id"));
+                            room.HotelId = reader.GetInt32(reader.GetOrdinal("hotel_id"));
+                            room.RoomNumber = reader.GetString(reader.GetOrdinal("room_number"));
+                            room.AvailabilityStatus = reader.GetString(reader.GetOrdinal("availability_status"));
+                            room.Price = reader.IsDBNull(reader.GetOrdinal("price")) ? null : (decimal?)reader.GetDecimal(reader.GetOrdinal("price"));
+                            room.RoomName = reader.IsDBNull(reader.GetOrdinal("Roomname")) ? null : reader.GetString(reader.GetOrdinal("Roomname"));
+                            room.Status = reader.IsDBNull(reader.GetOrdinal("status")) ? null : reader.GetString(reader.GetOrdinal("status"));
+                            room.RoomType = reader.IsDBNull(reader.GetOrdinal("roomtype")) ? null : reader.GetString(reader.GetOrdinal("roomtype"));
                             rooms.Add(room);
                         }
                     }

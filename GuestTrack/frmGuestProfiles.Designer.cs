@@ -64,7 +64,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 85);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 248);
+            this.dataGridView1.Size = new System.Drawing.Size(776, 311);
             this.dataGridView1.TabIndex = 6;
             // 
             // label1
@@ -106,6 +106,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Name = "frmGuestProfiles";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmGuestProfiles";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

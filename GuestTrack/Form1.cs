@@ -54,7 +54,13 @@ namespace GuestTrack
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            OpenForm(typeof(frmRoomReservation));
+            //OpenForm(typeof(frmRoomReservation));
+            frmRoomReservation roomReservation = new frmRoomReservation();
+            roomReservation.ShowDialog();
+            frmReservationDashboard reservationDashboard = new frmReservationDashboard();
+            reservationDashboard.LoadReservations();
+
+
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -74,7 +80,9 @@ namespace GuestTrack
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            OpenForm(typeof(frmGuestProfiles));
+            //OpenForm(typeof(frmGuestProfiles));
+            frmGuestProfiles frmGuestProfiles = new frmGuestProfiles();
+            frmGuestProfiles.ShowDialog();
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -82,6 +90,11 @@ namespace GuestTrack
             frmHouselistReports houselistReports = new frmHouselistReports();
             houselistReports.ShowDialog();
 
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            OpenForm(typeof(frmReservationDashboard));
         }
     }
 }

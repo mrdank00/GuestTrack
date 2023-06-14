@@ -27,7 +27,7 @@ namespace GuestTrack
 
         private void frmReservationDashboard_Load(object sender, EventArgs e)
         {
-            PopulateDates(dateTimePicker1.Value);
+           //PopulateDates(dateTimePicker1.Value);
         }
         private void PopulateDates(DateTime exactDate)
         {
@@ -37,7 +37,7 @@ namespace GuestTrack
 
 
             // Add date columns and populate rows
-            DateTime currentDate = exactDate;
+            DateTime currentDate = exactDate.AddDays(-1);
             DateTime endDate = currentDate.AddDays(14);
             int columnCount = 2; // Starting column index for dates
             foreach (Tuple<string, string> roomTuple in roomList)
@@ -86,7 +86,7 @@ namespace GuestTrack
                         // Check if the date is within the specified range
                         if (columnDate >= startDate && columnDate <= endDate)
                         {
-                            string reservationStatus = reservation.GetReservationStatus(reservid); // Fetch reservation status from the database based on the reservation ID
+                            int reservationStatus = reservation.GetReservationStatus(reservid); // Fetch reservation status from the database based on the reservation ID
                             Color color = reservation.GetColorCode(reservationStatus); // Fetch the color code based on the reservation status
 
                             cell.Style.BackColor = color;
@@ -104,7 +104,7 @@ namespace GuestTrack
 
 
 
-        private void LoadReservations()
+        public void LoadReservations()
         {
           
             string query = "SELECT check_in_date, check_out_date, roomname, guestname,reservation_id FROM Reservations";
@@ -201,6 +201,7 @@ namespace GuestTrack
         {
             frmRoomReservation frm = new frmRoomReservation();
             frm.ShowDialog();
+            LoadReservations();
 
 
         }
@@ -209,6 +210,7 @@ namespace GuestTrack
         {
             frmGuestAccount frm = new frmGuestAccount(roomNo,date,cellcontent);
             frm.ShowDialog();
+            LoadReservations();
         }
 
 
@@ -233,7 +235,7 @@ namespace GuestTrack
             if (storedCell != null)
             {
                 // Get the content of the stored cell
-                string cellData = storedCell.Value.ToString();
+                string cellData = storedCell.Tag.ToString();
 
                 // Get the row header value (leftmost cell value)
                 string rowHeader = storedCell.OwningRow.Cells[1].Value.ToString();
@@ -247,7 +249,7 @@ namespace GuestTrack
                 {
                     // Show the content, row header, and column header in a MessageBox
                     //string message = $"Cell Content: {cellData}\nRow Header: {rowHeader}\nColumn Header: {columnHeader}";
-                    //   MessageBox.Show(message, "Cell Information");
+                    //MessageBox.Show(message, "Cell Information");
 
                     // Pass the row header and column header to the ShowAccountDialog method
                     ShowAccountDialog(rowHeader, columnDate,cellData);
@@ -270,6 +272,11 @@ namespace GuestTrack
                 MessageBox.Show(secretReservationId);
                 // Do something with the secretReservationId
             }
+        }
+
+        private void frmReservationDashboard_Shown(object sender, EventArgs e)
+        {
+            PopulateDates(dateTimePicker1.Value);
         }
     }
 

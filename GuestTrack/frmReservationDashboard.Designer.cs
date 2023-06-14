@@ -37,8 +37,11 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addReservationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cancelBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkInGuestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.confirmationRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.confirmedNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sendSMSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -118,36 +121,57 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addReservationToolStripMenuItem,
             this.accountToolStripMenuItem,
-            this.cancelBookingToolStripMenuItem,
-            this.checkInGuestToolStripMenuItem});
+            this.checkInGuestToolStripMenuItem,
+            this.confirmationRequestToolStripMenuItem,
+            this.confirmedNoteToolStripMenuItem,
+            this.sendSMSToolStripMenuItem,
+            this.sendEmailToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(191, 158);
             // 
             // addReservationToolStripMenuItem
             // 
             this.addReservationToolStripMenuItem.Name = "addReservationToolStripMenuItem";
-            this.addReservationToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.addReservationToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.addReservationToolStripMenuItem.Text = "Add Reservation";
             this.addReservationToolStripMenuItem.Click += new System.EventHandler(this.addReservationToolStripMenuItem_Click);
             // 
             // accountToolStripMenuItem
             // 
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.accountToolStripMenuItem.Text = "Account";
             this.accountToolStripMenuItem.Click += new System.EventHandler(this.accountToolStripMenuItem_Click);
-            // 
-            // cancelBookingToolStripMenuItem
-            // 
-            this.cancelBookingToolStripMenuItem.Name = "cancelBookingToolStripMenuItem";
-            this.cancelBookingToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.cancelBookingToolStripMenuItem.Text = "Cancel booking";
             // 
             // checkInGuestToolStripMenuItem
             // 
             this.checkInGuestToolStripMenuItem.Name = "checkInGuestToolStripMenuItem";
-            this.checkInGuestToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.checkInGuestToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.checkInGuestToolStripMenuItem.Text = "CheckIn Guest";
+            // 
+            // confirmationRequestToolStripMenuItem
+            // 
+            this.confirmationRequestToolStripMenuItem.Name = "confirmationRequestToolStripMenuItem";
+            this.confirmationRequestToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.confirmationRequestToolStripMenuItem.Text = "Confirmation Request";
+            // 
+            // confirmedNoteToolStripMenuItem
+            // 
+            this.confirmedNoteToolStripMenuItem.Name = "confirmedNoteToolStripMenuItem";
+            this.confirmedNoteToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.confirmedNoteToolStripMenuItem.Text = "Confirmed Note";
+            // 
+            // sendSMSToolStripMenuItem
+            // 
+            this.sendSMSToolStripMenuItem.Name = "sendSMSToolStripMenuItem";
+            this.sendSMSToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.sendSMSToolStripMenuItem.Text = "Send SMS";
+            // 
+            // sendEmailToolStripMenuItem
+            // 
+            this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
+            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.sendEmailToolStripMenuItem.Text = "Send Email";
             // 
             // button1
             // 
@@ -216,6 +240,7 @@
             this.Name = "frmReservationDashboard";
             this.Text = "frmReservationDashboard";
             this.Load += new System.EventHandler(this.frmReservationDashboard_Load);
+            this.Shown += new System.EventHandler(this.frmReservationDashboard_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -232,10 +257,13 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addReservationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accountToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cancelBookingToolStripMenuItem;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.ToolStripMenuItem checkInGuestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem confirmationRequestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem confirmedNoteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sendSMSToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sendEmailToolStripMenuItem;
     }
 }
