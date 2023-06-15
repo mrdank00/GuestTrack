@@ -15,6 +15,7 @@ namespace GuestTrack.Controllers
 
         public int LedgerId { get; set; }
         public int GuestId { get; set; }
+        public int reservationid { get; set; }
         public string Guestname { get; set; }
         public string Reference { get; set; }
         public string TransactionType { get; set; }
@@ -73,8 +74,8 @@ namespace GuestTrack.Controllers
             using (SqlConnection connection = dbManager.Guestcon())
             {
                 string insertQuery = @"INSERT INTO GuestLedger (Guestid, ref, tranxtype, tranxdescription, tranxsource,
-                Debit, Credit, Balance,date,roomname,guestname) VALUES ( @GuestId, @Reference, @TransactionType, @TransactionDescription,
-                @TransactionSource, @Debit, @Credit, @Balance,@date,@roomname,@guestname)";
+                Debit, Credit, Balance,date,guestname,reservation_id) VALUES ( @GuestId, @Reference, @TransactionType, @TransactionDescription,
+                @TransactionSource, @Debit, @Credit, @Balance,@date,@guestname,@reservation_id)";
 
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
                 {
@@ -85,8 +86,8 @@ namespace GuestTrack.Controllers
                     command.Parameters.AddWithValue("@TransactionDescription", TransactionDescription);
                     command.Parameters.AddWithValue("@TransactionSource", TransactionSource);
                     command.Parameters.AddWithValue("@date", Date);
-                    command.Parameters.AddWithValue("@roomname", Roomno);
                     command.Parameters.AddWithValue("@guestname", Guestname);
+                    command.Parameters.AddWithValue("@reservation_id", reservationid);
                     
                     if (postype == "d")
                     {
@@ -155,8 +156,8 @@ namespace GuestTrack.Controllers
         {
             using (SqlConnection connection = dbManager.Guestcon())
             {
-                string insertQuery = @"INSERT INTO GuestPayments (Gustid, datepaid, AmountPaid, Paymenttype, narration, ActiveUser,ref)
-                                   VALUES (@GuestId, @DatePaid, @AmountPaid, @PaymentType, @Narration, @activeUser,@ref)";
+                string insertQuery = @"INSERT INTO GuestPayments (Gustid, datepaid, AmountPaid, Paymenttype, narration, ActiveUser,ref,reservation_id)
+                                   VALUES (@GuestId, @DatePaid, @AmountPaid, @PaymentType, @Narration, @activeUser,@ref,@reservid)";
 
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
                 {
@@ -167,6 +168,7 @@ namespace GuestTrack.Controllers
                     command.Parameters.AddWithValue("@Narration", Narration);
                     command.Parameters.AddWithValue("@activeUser", activeuser);
                     command.Parameters.AddWithValue("@ref", Reference);
+                    command.Parameters.AddWithValue("@reservid", reservationid);
 
                     try
                     {
@@ -191,16 +193,17 @@ namespace GuestTrack.Controllers
     
             using (SqlConnection connection = dbManager.Guestcon())
             {
+
                 connection.Open();
 
-                string query = "SELECT date,ref,tranxtype,debit,credit,guestname,guestid,roomname FROM GuestLedger WHERE reservation_id=@gname";
+                string query = "SELECT date,ref,tranxtype,debit,credit,guestname,guestid FROM GuestLedger WHERE reservation_id=@gname";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@gname", Guestname);
-            //    command.Parameters.AddWithValue("@date", Date.Date);
+                command.Parameters.AddWithValue("@gname", reservationid);
+           
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                // Load the data reader into the DataTable
+                //Load the data reader into the DataTable
                 bookingsTable.Load(reader);
 
                 reader.Close();

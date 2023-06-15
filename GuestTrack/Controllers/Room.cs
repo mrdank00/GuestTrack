@@ -19,7 +19,6 @@ namespace GuestTrack.Controllers
         public int? RoomTypeId { get; set; }
         public string AvailabilityStatus { get; set; }
         public decimal? Price { get; set; }
-        public string RoomName { get; set; }
         public string Status { get; set; }
         public string RoomType { get; set; }
 
@@ -43,8 +42,8 @@ namespace GuestTrack.Controllers
         {
             using (SqlConnection connection = dbManager.Guestcon())
             {
-                string insertQuery = @"INSERT INTO Rooms (hotel_id, room_number, availability_status, price, Roomname, status, roomtype)
-                               VALUES (@HotelId, @RoomNumber, @AvailabilityStatus, @Price, @RoomName, @Status, @RoomType)";
+                string insertQuery = @"INSERT INTO Rooms (hotel_id, room_number, availability_status, price, status, roomtype)
+                               VALUES (@HotelId, @RoomNumber, @AvailabilityStatus, @Price, @Status, @RoomType)";
 
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
                 {
@@ -52,7 +51,7 @@ namespace GuestTrack.Controllers
                     command.Parameters.AddWithValue("@RoomNumber", RoomNumber);
                     command.Parameters.AddWithValue("@AvailabilityStatus", AvailabilityStatus);
                     command.Parameters.AddWithValue("@Price", Price.HasValue ? (object)Price.Value : (object)DBNull.Value);
-                    command.Parameters.AddWithValue("@RoomName", RoomName ?? (object)DBNull.Value);
+             
                     command.Parameters.AddWithValue("@Status", Status ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@RoomType", RoomType ?? (object)DBNull.Value);
 
@@ -82,7 +81,7 @@ namespace GuestTrack.Controllers
             {
                 connection.Open();
 
-                string selectQuery = "SELECT * FROM Rooms WHERE Roomname = @RoomName";
+                string selectQuery = "SELECT * FROM Rooms WHERE room_number = @RoomName";
                 using (SqlCommand command = new SqlCommand(selectQuery, connection))
                 {
                     command.Parameters.AddWithValue("@RoomName", roomName);
@@ -99,7 +98,7 @@ namespace GuestTrack.Controllers
 
                             room.AvailabilityStatus = reader.GetString(reader.GetOrdinal("availability_status"));
                             room.Price = reader.IsDBNull(reader.GetOrdinal("price")) ? null : (decimal?)reader.GetDecimal(reader.GetOrdinal("price"));
-                            room.RoomName = reader.IsDBNull(reader.GetOrdinal("Roomname")) ? null : reader.GetString(reader.GetOrdinal("Roomname"));
+                           
                             room.Status = reader.IsDBNull(reader.GetOrdinal("status")) ? null : reader.GetString(reader.GetOrdinal("status"));
                             room.RoomType = reader.IsDBNull(reader.GetOrdinal("roomtype")) ? null : reader.GetString(reader.GetOrdinal("roomtype"));
                         }
@@ -118,7 +117,7 @@ namespace GuestTrack.Controllers
             using (SqlConnection connection = dbManager.Guestcon())
             {
                 string updateQuery = @"UPDATE Rooms SET hotel_id = @HotelId, room_number = @RoomNumber, room_type_id = @RoomTypeId,
-                               availability_status = @AvailabilityStatus, price = @Price, Roomname = @RoomName, status = @Status,
+                               availability_status = @AvailabilityStatus, price = @Price, status = @Status,
                                roomtype = @RoomType WHERE room_id = @RoomId";
 
                 using (SqlCommand command = new SqlCommand(updateQuery, connection))
@@ -128,7 +127,7 @@ namespace GuestTrack.Controllers
                     command.Parameters.AddWithValue("@RoomTypeId", RoomTypeId);
                     command.Parameters.AddWithValue("@AvailabilityStatus", AvailabilityStatus);
                     command.Parameters.AddWithValue("@Price", Price.HasValue ? (object)Price.Value : (object)DBNull.Value);
-                    command.Parameters.AddWithValue("@RoomName", RoomName ?? (object)DBNull.Value);
+                   
                     command.Parameters.AddWithValue("@Status", Status ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@RoomType", RoomType ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@RoomId", RoomId);
@@ -209,7 +208,7 @@ namespace GuestTrack.Controllers
                             room.RoomNumber = reader.GetString(reader.GetOrdinal("room_number"));
                             room.AvailabilityStatus = reader.GetString(reader.GetOrdinal("availability_status"));
                             room.Price = reader.IsDBNull(reader.GetOrdinal("price")) ? null : (decimal?)reader.GetDecimal(reader.GetOrdinal("price"));
-                            room.RoomName = reader.IsDBNull(reader.GetOrdinal("Roomname")) ? null : reader.GetString(reader.GetOrdinal("Roomname"));
+                           
                             room.Status = reader.IsDBNull(reader.GetOrdinal("status")) ? null : reader.GetString(reader.GetOrdinal("status"));
                             room.RoomType = reader.IsDBNull(reader.GetOrdinal("roomtype")) ? null : reader.GetString(reader.GetOrdinal("roomtype"));
                             rooms.Add(room);

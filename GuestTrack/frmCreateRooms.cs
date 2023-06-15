@@ -29,7 +29,7 @@ namespace GuestTrack
         {
             Room room = new Room();
             room.HotelId = 1;
-            room.RoomName = txtRoomName.Text;
+            room.RoomNumber = txtRoomName.Text;
             room.RoomNumber = txtRoomno.Text;
             room.RoomType = cbRoomtype.Text;
             room.AvailabilityStatus = "Available";

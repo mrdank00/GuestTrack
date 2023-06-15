@@ -16,7 +16,7 @@ namespace GuestTrack
 {
     public partial class frmReservationDashboard : Form
     {
-        DatabaseManager dbManager = new DatabaseManager();
+        private static DatabaseManager dbManager = new DatabaseManager();
         
         public frmReservationDashboard()
         {
@@ -67,42 +67,37 @@ namespace GuestTrack
         {
             Reservation reservation = new Reservation();
 
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            // Find the row corresponding to the room name
+            DataGridViewRow roomRow = dataGridView1.Rows
+                .Cast<DataGridViewRow>()
+                .FirstOrDefault(row => row.Cells[1].Value?.ToString() == roomName);
+
+            if (roomRow != null)
             {
-                // Check if the row corresponds to the specified room name
-                if (row.Cells[1].Value != null && row.Cells[1].Value.ToString() == roomName)
+                endDate = endDate.AddDays(-1);
+
+                // Iterate over the date columns
+                for (int columnIndex = 2; columnIndex < dataGridView1.Columns.Count; columnIndex++)
                 {
-                    endDate = endDate.AddDays(-1);
+                    // Get the date from the column header text
+                    DateTime columnDate = DateTime.ParseExact(dataGridView1.Columns[columnIndex].HeaderText, "ddd, dd-MMM-yy", CultureInfo.InvariantCulture);
+                    DataGridViewCell cell = roomRow.Cells[columnIndex];
+                    cell.Style.BackColor = Color.White;
+                    cell.Value = "";
 
-                    // Iterate over the date columns
-                    for (int columnIndex = 2; columnIndex < dataGridView1.Columns.Count; columnIndex++)
+                    // Check if the date is within the specified range
+                    if (columnDate >= startDate && columnDate <= endDate)
                     {
-                        // Get the date from the column header text
-                        DateTime columnDate = DateTime.ParseExact(dataGridView1.Columns[columnIndex].HeaderText, "ddd, dd-MMM-yy", CultureInfo.InvariantCulture);
-                        DataGridViewCell cell = row.Cells[columnIndex];
-                        cell.Style.BackColor = Color.White;
-                        cell.Value = "";
+                        int reservationStatus = reservation.GetReservationStatus(reservid); // Fetch reservation status from the database based on the reservation ID
+                        Color color = reservation.GetColorCode(reservationStatus); // Fetch the color code based on the reservation status
 
-                        // Check if the date is within the specified range
-                        if (columnDate >= startDate && columnDate <= endDate)
-                        {
-                            int reservationStatus = reservation.GetReservationStatus(reservid); // Fetch reservation status from the database based on the reservation ID
-                            Color color = reservation.GetColorCode(reservationStatus); // Fetch the color code based on the reservation status
-
-                            cell.Style.BackColor = color;
-
-                            if (row.Cells[1].Value.ToString() == roomName)
-                            {
-                                cell.Value = guestName;
-                                cell.Tag = reservid;
-                            }
-                        }
+                        cell.Style.BackColor = color;
+                        cell.Value = guestName;
+                        cell.Tag = reservid;
                     }
                 }
             }
         }
-
-
 
         public void LoadReservations()
         {
@@ -206,7 +201,7 @@ namespace GuestTrack
 
         }
 
-        private void ShowAccountDialog(string roomNo,DateTime date,string cellcontent)
+        private void ShowAccountDialog(string roomNo,DateTime date,int cellcontent)
         {
             frmGuestAccount frm = new frmGuestAccount(roomNo,date,cellcontent);
             frm.ShowDialog();
@@ -235,7 +230,8 @@ namespace GuestTrack
             if (storedCell != null)
             {
                 // Get the content of the stored cell
-                string cellData = storedCell.Tag.ToString();
+                int cellData = (int)storedCell.Tag;
+
 
                 // Get the row header value (leftmost cell value)
                 string rowHeader = storedCell.OwningRow.Cells[1].Value.ToString();
@@ -278,6 +274,36 @@ namespace GuestTrack
         {
             PopulateDates(dateTimePicker1.Value);
         }
+        
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text;
+            //SearchReservations(searchText);
+          
+        }
+        private void SearchReservations(string searchText)
+        {
+            // Clear any existing selection
+            dataGridView1.ClearSelection();
+
+            // Iterate over the rows and cells to find the matching cells
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value != null && cell.Value.ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        dataGridView1.CurrentCell = cell; // Set the current cell to bring it into view
+                        cell.Selected = true; // Select the cell if the value contains the search text
+                        dataGridView1.FirstDisplayedScrollingRowIndex = cell.RowIndex; // Scroll to the row containing the cell
+                        dataGridView1.Focus(); // Set focus to the DataGridView
+                        return; // Exit the method after finding the first match
+                    }
+                }
+            }
+        }
+
     }
 
 }

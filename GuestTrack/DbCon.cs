@@ -62,7 +62,7 @@ namespace GuestTrack
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT room_number, status FROM Rooms", connection))
+                using (SqlCommand command = new SqlCommand("SELECT room_number,status FROM Rooms", connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {

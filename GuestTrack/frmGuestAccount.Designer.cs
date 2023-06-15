@@ -40,12 +40,15 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblCredit = new System.Windows.Forms.Label();
+            this.lbldebit = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblbalance = new System.Windows.Forms.Label();
             this.lblroom = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.lblreservationid = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -86,6 +89,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(692, 225);
             this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             // 
             // button1
             // 
@@ -105,6 +109,7 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Add Charge";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -139,7 +144,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(108, 109);
+            this.label1.Location = new System.Drawing.Point(122, 109);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 17);
             this.label1.TabIndex = 15;
@@ -158,7 +163,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(108, 72);
+            this.label3.Location = new System.Drawing.Point(380, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(21, 17);
             this.label3.TabIndex = 18;
@@ -168,31 +173,31 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(16, 72);
+            this.label4.Location = new System.Drawing.Point(307, 109);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 17);
             this.label4.TabIndex = 17;
             this.label4.Text = "Guest ID:";
             // 
-            // label5
+            // lblCredit
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(653, 391);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 17);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "0.00";
+            this.lblCredit.AutoSize = true;
+            this.lblCredit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCredit.Location = new System.Drawing.Point(651, 391);
+            this.lblCredit.Name = "lblCredit";
+            this.lblCredit.Size = new System.Drawing.Size(33, 17);
+            this.lblCredit.TabIndex = 19;
+            this.lblCredit.Text = "0.00";
             // 
-            // label6
+            // lbldebit
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(567, 391);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 17);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "0.00";
+            this.lbldebit.AutoSize = true;
+            this.lbldebit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldebit.Location = new System.Drawing.Point(567, 391);
+            this.lbldebit.Name = "lbldebit";
+            this.lbldebit.Size = new System.Drawing.Size(33, 17);
+            this.lbldebit.TabIndex = 20;
+            this.lbldebit.Text = "0.00";
             // 
             // label7
             // 
@@ -204,21 +209,21 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "Balance";
             // 
-            // label8
+            // lblbalance
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(671, 414);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 17);
-            this.label8.TabIndex = 22;
-            this.label8.Text = "0";
+            this.lblbalance.AutoSize = true;
+            this.lblbalance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblbalance.Location = new System.Drawing.Point(651, 414);
+            this.lblbalance.Name = "lblbalance";
+            this.lblbalance.Size = new System.Drawing.Size(15, 17);
+            this.lblbalance.TabIndex = 22;
+            this.lblbalance.Text = "0";
             // 
             // lblroom
             // 
             this.lblroom.AutoSize = true;
             this.lblroom.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblroom.Location = new System.Drawing.Point(359, 72);
+            this.lblroom.Location = new System.Drawing.Point(380, 72);
             this.lblroom.Name = "lblroom";
             this.lblroom.Size = new System.Drawing.Size(21, 17);
             this.lblroom.TabIndex = 24;
@@ -234,17 +239,50 @@
             this.label10.TabIndex = 23;
             this.label10.Text = "Room:";
             // 
+            // lblreservationid
+            // 
+            this.lblreservationid.AutoSize = true;
+            this.lblreservationid.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblreservationid.Location = new System.Drawing.Point(122, 72);
+            this.lblreservationid.Name = "lblreservationid";
+            this.lblreservationid.Size = new System.Drawing.Size(44, 17);
+            this.lblreservationid.TabIndex = 26;
+            this.lblreservationid.Text = "Name";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label12.Location = new System.Drawing.Point(16, 72);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(100, 17);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "Reservation ID:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(466, 391);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 17);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Debit";
+            // 
             // frmGuestAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(716, 499);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblreservationid);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.lblroom);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lblbalance);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lbldebit);
+            this.Controls.Add(this.lblCredit);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button5);
@@ -282,11 +320,14 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblCredit;
+        private System.Windows.Forms.Label lbldebit;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblbalance;
         private System.Windows.Forms.Label lblroom;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblreservationid;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -224,7 +224,7 @@ namespace GuestTrack
 
         private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dbManager.LoadComboBoxValues("select * from rooms where roomtype='" + cbroomtype.Text + "'", cbroomname, "roomname");
+            dbManager.LoadComboBoxValues("select * from rooms where roomtype='" + cbroomtype.Text + "'", cbroomname, "room_NUMBER");
         }
 
        

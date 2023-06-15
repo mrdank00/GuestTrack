@@ -43,10 +43,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.numupguestid = new System.Windows.Forms.NumericUpDown();
-            this.cbroomname = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.cbreservationid = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numupguestid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbreservationid)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -140,9 +142,9 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(71, 363);
+            this.button3.Location = new System.Drawing.Point(242, 363);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(281, 37);
+            this.button3.Size = new System.Drawing.Size(164, 37);
             this.button3.TabIndex = 28;
             this.button3.Text = "SAVE";
             this.button3.UseVisualStyleBackColor = true;
@@ -209,19 +211,6 @@
             this.numupguestid.Size = new System.Drawing.Size(112, 25);
             this.numupguestid.TabIndex = 38;
             // 
-            // cbroomname
-            // 
-            this.cbroomname.Enabled = false;
-            this.cbroomname.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.cbroomname.FormattingEnabled = true;
-            this.cbroomname.Items.AddRange(new object[] {
-            "Room Only",
-            "Room With Breakfast"});
-            this.cbroomname.Location = new System.Drawing.Point(181, 87);
-            this.cbroomname.Name = "cbroomname";
-            this.cbroomname.Size = new System.Drawing.Size(107, 25);
-            this.cbroomname.TabIndex = 41;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -233,12 +222,38 @@
             this.label6.Text = "Room";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // cbreservationid
+            // 
+            this.cbreservationid.Enabled = false;
+            this.cbreservationid.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbreservationid.Location = new System.Drawing.Point(176, 87);
+            this.cbreservationid.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.cbreservationid.Name = "cbreservationid";
+            this.cbreservationid.Size = new System.Drawing.Size(112, 25);
+            this.cbreservationid.TabIndex = 41;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(35, 363);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(164, 37);
+            this.button1.TabIndex = 42;
+            this.button1.Text = "CANCEL";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmGuestPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 412);
-            this.Controls.Add(this.cbroomname);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cbreservationid);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label35);
             this.Controls.Add(this.numupguestid);
@@ -261,6 +276,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numupguestid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbreservationid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,7 +299,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.NumericUpDown numupguestid;
-        private System.Windows.Forms.ComboBox cbroomname;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown cbreservationid;
+        private System.Windows.Forms.Button button1;
     }
 }

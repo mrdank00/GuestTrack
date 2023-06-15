@@ -15,13 +15,13 @@ namespace GuestTrack
     {
         String Guestname;
         String Guestid;
-        String Room;
-        public frmGuestPayment(string guestname,string guestid,string room)
+        int Reservationid;
+        public frmGuestPayment(string guestname,string guestid,int reservationid)
         {
             this.InitializeComponent();
             Guestname = guestname;
             Guestid = guestid;
-            Room = room;
+            Reservationid = reservationid;
         }
         public frmGuestPayment()
         {
@@ -31,7 +31,7 @@ namespace GuestTrack
         private void frmGuestPayment_Load(object sender, EventArgs e)
         {
             cbGuestName.Text= Guestname;
-            cbroomname.Text= Room;
+            cbreservationid.Text= Reservationid.ToString();
             numupguestid.Text= Guestid; 
         }
 
@@ -47,21 +47,22 @@ namespace GuestTrack
             account.Source = "FrontDesk";
           
             account.GuestId = int.Parse(numupguestid.Value.ToString());
+            account.reservationid = int.Parse(cbreservationid.Value.ToString());
       
             account.datepaid = dpDatePaid.Value;
         
             account.Paymenttype = "Booking Payment";
             account.Guestname =cbGuestName.Text;
             account.Reference = "Booking Payment";
-            account.Narration = "Payment for reservation for room " + cbroomname.Text;
+            account.Narration = "Payment for reservation for Reservation ID: " + cbreservationid.Text;
             account.activeuser = cbGuestName.Text;
-            account.Roomno = cbroomname.Text;
+          
             account.Saletype = "Guest Sale";
             account.Category = "Accomodation";
             account.Amountpaid = double.Parse(txtAmount.Text);
             account.Reference = txtRef.Text;
             account.TransactionType = "Accomodation";
-            account.TransactionDescription = "Room Booking for Room:" + cbroomname.Text;
+            account.TransactionDescription = "Room Booking for Reservation:" + cbreservationid.Text;
           
             account.Credit = double.Parse(txtAmount .Text);
             // Balance = balance;
@@ -71,6 +72,11 @@ namespace GuestTrack
 
          
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }
