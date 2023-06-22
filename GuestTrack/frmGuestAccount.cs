@@ -106,5 +106,19 @@ namespace GuestTrack
             frmChargeGuest frmcharge = new frmChargeGuest(name, id, reservationid);
             frmcharge.ShowDialog();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to continue?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Reservation reservation = new Reservation();
+                reservation.ReservationId = int.Parse(lblreservationid.Text);
+                reservation.UpdateReservationStatus(9);
+                // User clicked 'Yes', perform the desired action
+            }
+           
+        }
     }
 }

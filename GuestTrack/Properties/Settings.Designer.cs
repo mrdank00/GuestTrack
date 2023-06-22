@@ -44,5 +44,16 @@ namespace GuestTrack.Properties {
                 return ((string)(this["GuestTrackDBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.8.179; Database=GuestDB; User ID= sa; Password=kissboy@62642;Multi" +
+            "pleActiveResultSets=True;Connect Timeout=30")]
+        public string servernet {
+            get {
+                return ((string)(this["servernet"]));
+            }
+        }
     }
 }

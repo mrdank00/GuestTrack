@@ -9,8 +9,6 @@ using System.Configuration;
 using System.Windows.Forms;
 namespace GuestTrack
 {
-  
-
     public class DatabaseManager
     {
         private readonly string connectionString;
@@ -18,7 +16,7 @@ namespace GuestTrack
 
         public DatabaseManager()
         {
-            connectionString = Properties.Settings.Default.Guestconstring;
+            connectionString = Properties.Settings.Default.servernet;
         }
 
         public SqlConnection Guestcon()

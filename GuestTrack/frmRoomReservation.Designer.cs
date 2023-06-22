@@ -30,6 +30,12 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cbSector = new System.Windows.Forms.ComboBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.numupguestid = new System.Windows.Forms.NumericUpDown();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.cbAddress = new System.Windows.Forms.ComboBox();
@@ -49,6 +55,9 @@
             this.cbGuestName = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblRoomID = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.numReservationid = new System.Windows.Forms.NumericUpDown();
             this.label20 = new System.Windows.Forms.Label();
             this.cbchild = new System.Windows.Forms.NumericUpDown();
             this.label19 = new System.Windows.Forms.Label();
@@ -74,6 +83,20 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label36 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.dpDatepaid = new System.Windows.Forms.DateTimePicker();
+            this.cbPaymode = new System.Windows.Forms.ComboBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.txtAmtpaid = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -89,39 +112,16 @@
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.numReservationid = new System.Windows.Forms.NumericUpDown();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.numupguestid = new System.Windows.Forms.NumericUpDown();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.txtAmtpaid = new System.Windows.Forms.TextBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.cbPaymode = new System.Windows.Forms.ComboBox();
-            this.dpDatepaid = new System.Windows.Forms.DateTimePicker();
-            this.label39 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.cbSector = new System.Windows.Forms.ComboBox();
-            this.label40 = new System.Windows.Forms.Label();
-            this.lblRoomID = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numupguestid)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numReservationid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbchild)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbadult)).BeginInit();
             this.tabPage3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numReservationid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numupguestid)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -173,6 +173,71 @@
             this.tabPage1.Text = "General Info";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // cbSector
+            // 
+            this.cbSector.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.cbSector.FormattingEnabled = true;
+            this.cbSector.Items.AddRange(new object[] {
+            "IT",
+            "Government"});
+            this.cbSector.Location = new System.Drawing.Point(493, 118);
+            this.cbSector.Name = "cbSector";
+            this.cbSector.Size = new System.Drawing.Size(260, 25);
+            this.cbSector.TabIndex = 39;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label40.Location = new System.Drawing.Point(414, 121);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(46, 17);
+            this.label40.TabIndex = 38;
+            this.label40.Text = "Sector";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label35.Location = new System.Drawing.Point(414, 23);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(68, 17);
+            this.label35.TabIndex = 37;
+            this.label35.Text = "Guest No.";
+            // 
+            // numupguestid
+            // 
+            this.numupguestid.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numupguestid.Location = new System.Drawing.Point(493, 20);
+            this.numupguestid.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numupguestid.Name = "numupguestid";
+            this.numupguestid.Size = new System.Drawing.Size(112, 25);
+            this.numupguestid.TabIndex = 36;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label33.Location = new System.Drawing.Point(702, 23);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(19, 17);
+            this.label33.TabIndex = 19;
+            this.label33.Text = "id";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label32.Location = new System.Drawing.Point(633, 23);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(63, 17);
+            this.label32.TabIndex = 18;
+            this.label32.Text = "Guest ID:";
             // 
             // label31
             // 
@@ -384,6 +449,46 @@
             this.tabPage2.Text = "Reservation Details";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // lblRoomID
+            // 
+            this.lblRoomID.AutoSize = true;
+            this.lblRoomID.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoomID.Location = new System.Drawing.Point(521, 169);
+            this.lblRoomID.Name = "lblRoomID";
+            this.lblRoomID.Size = new System.Drawing.Size(44, 17);
+            this.lblRoomID.TabIndex = 36;
+            this.lblRoomID.Text = "Room";
+            this.lblRoomID.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label34.Location = new System.Drawing.Point(655, 14);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(105, 17);
+            this.label34.TabIndex = 35;
+            this.label34.Text = "Reservation No.";
+            // 
+            // numReservationid
+            // 
+            this.numReservationid.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numReservationid.Location = new System.Drawing.Point(658, 34);
+            this.numReservationid.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numReservationid.Name = "numReservationid";
+            this.numReservationid.Size = new System.Drawing.Size(112, 25);
+            this.numReservationid.TabIndex = 34;
+            this.numReservationid.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numReservationid.ValueChanged += new System.EventHandler(this.numReservationid_ValueChanged);
             // 
             // label20
             // 
@@ -599,9 +704,9 @@
             this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.label11.Location = new System.Drawing.Point(333, 14);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(60, 17);
+            this.label11.Size = new System.Drawing.Size(71, 17);
             this.label11.TabIndex = 13;
-            this.label11.Text = "Check-In";
+            this.label11.Text = "Check-Out";
             // 
             // dpCheckin
             // 
@@ -655,6 +760,156 @@
             this.tabPage3.Text = "Payments(Deposits)";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Enter += new System.EventHandler(this.tabPage3_Enter);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(318, 138);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(82, 17);
+            this.label36.TabIndex = 31;
+            this.label36.Text = "Deposit Due";
+            this.label36.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(318, 158);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(201, 25);
+            this.dateTimePicker1.TabIndex = 30;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Guest",
+            "Customer"});
+            this.comboBox2.Location = new System.Drawing.Point(591, 94);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(175, 25);
+            this.comboBox2.TabIndex = 29;
+            this.comboBox2.Visible = false;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(591, 74);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(95, 17);
+            this.label26.TabIndex = 28;
+            this.label26.Text = "Pick Customer";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label26.Visible = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(36, 163);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(90, 21);
+            this.checkBox1.TabIndex = 27;
+            this.checkBox1.Text = "Confirmed";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.checkBox3);
+            this.groupBox1.Controls.Add(this.checkBox2);
+            this.groupBox1.Controls.Add(this.label39);
+            this.groupBox1.Controls.Add(this.dpDatepaid);
+            this.groupBox1.Controls.Add(this.cbPaymode);
+            this.groupBox1.Controls.Add(this.label38);
+            this.groupBox1.Controls.Add(this.label37);
+            this.groupBox1.Controls.Add(this.txtAmtpaid);
+            this.groupBox1.Location = new System.Drawing.Point(36, 214);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(739, 176);
+            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Payments";
+            this.groupBox1.Visible = false;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(358, 149);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(170, 21);
+            this.checkBox3.TabIndex = 34;
+            this.checkBox3.Text = "Send Confirmation SMS";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(555, 149);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(169, 21);
+            this.checkBox2.TabIndex = 32;
+            this.checkBox2.Text = "Send Confirmation Mail";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label39.Location = new System.Drawing.Point(17, 30);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(66, 17);
+            this.label39.TabIndex = 33;
+            this.label39.Text = "Date Paid";
+            // 
+            // dpDatepaid
+            // 
+            this.dpDatepaid.Location = new System.Drawing.Point(125, 24);
+            this.dpDatepaid.Name = "dpDatepaid";
+            this.dpDatepaid.Size = new System.Drawing.Size(180, 25);
+            this.dpDatepaid.TabIndex = 32;
+            // 
+            // cbPaymode
+            // 
+            this.cbPaymode.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.cbPaymode.FormattingEnabled = true;
+            this.cbPaymode.Items.AddRange(new object[] {
+            "Guest",
+            "Customer"});
+            this.cbPaymode.Location = new System.Drawing.Point(549, 90);
+            this.cbPaymode.Name = "cbPaymode";
+            this.cbPaymode.Size = new System.Drawing.Size(175, 25);
+            this.cbPaymode.TabIndex = 32;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label38.Location = new System.Drawing.Point(459, 93);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(69, 17);
+            this.label38.TabIndex = 29;
+            this.label38.Text = "Pay Mode";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label37.Location = new System.Drawing.Point(19, 88);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(88, 17);
+            this.label37.TabIndex = 27;
+            this.label37.Text = "Amount Paid";
+            // 
+            // txtAmtpaid
+            // 
+            this.txtAmtpaid.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.txtAmtpaid.Location = new System.Drawing.Point(125, 85);
+            this.txtAmtpaid.Name = "txtAmtpaid";
+            this.txtAmtpaid.Size = new System.Drawing.Size(180, 25);
+            this.txtAmtpaid.TabIndex = 26;
+            this.txtAmtpaid.Text = "0.00";
             // 
             // label29
             // 
@@ -815,261 +1070,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Reservation";
             // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label32.Location = new System.Drawing.Point(633, 23);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(63, 17);
-            this.label32.TabIndex = 18;
-            this.label32.Text = "Guest ID:";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label33.Location = new System.Drawing.Point(702, 23);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(19, 17);
-            this.label33.TabIndex = 19;
-            this.label33.Text = "id";
-            // 
-            // numReservationid
-            // 
-            this.numReservationid.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numReservationid.Location = new System.Drawing.Point(658, 34);
-            this.numReservationid.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numReservationid.Name = "numReservationid";
-            this.numReservationid.Size = new System.Drawing.Size(112, 25);
-            this.numReservationid.TabIndex = 34;
-            this.numReservationid.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numReservationid.ValueChanged += new System.EventHandler(this.numReservationid_ValueChanged);
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label34.Location = new System.Drawing.Point(655, 14);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(105, 17);
-            this.label34.TabIndex = 35;
-            this.label34.Text = "Reservation No.";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label35.Location = new System.Drawing.Point(414, 23);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(68, 17);
-            this.label35.TabIndex = 37;
-            this.label35.Text = "Guest No.";
-            // 
-            // numupguestid
-            // 
-            this.numupguestid.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numupguestid.Location = new System.Drawing.Point(493, 20);
-            this.numupguestid.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numupguestid.Name = "numupguestid";
-            this.numupguestid.Size = new System.Drawing.Size(112, 25);
-            this.numupguestid.TabIndex = 36;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.checkBox3);
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.label39);
-            this.groupBox1.Controls.Add(this.dpDatepaid);
-            this.groupBox1.Controls.Add(this.cbPaymode);
-            this.groupBox1.Controls.Add(this.label38);
-            this.groupBox1.Controls.Add(this.label37);
-            this.groupBox1.Controls.Add(this.txtAmtpaid);
-            this.groupBox1.Location = new System.Drawing.Point(36, 214);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(739, 176);
-            this.groupBox1.TabIndex = 26;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Payments";
-            this.groupBox1.Visible = false;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(36, 163);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(90, 21);
-            this.checkBox1.TabIndex = 27;
-            this.checkBox1.Text = "Confirmed";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Guest",
-            "Customer"});
-            this.comboBox2.Location = new System.Drawing.Point(591, 94);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(175, 25);
-            this.comboBox2.TabIndex = 29;
-            this.comboBox2.Visible = false;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(591, 74);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(95, 17);
-            this.label26.TabIndex = 28;
-            this.label26.Text = "Pick Customer";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label26.Visible = false;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(318, 158);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(201, 25);
-            this.dateTimePicker1.TabIndex = 30;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(318, 138);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(82, 17);
-            this.label36.TabIndex = 31;
-            this.label36.Text = "Deposit Due";
-            this.label36.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label37.Location = new System.Drawing.Point(19, 88);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(88, 17);
-            this.label37.TabIndex = 27;
-            this.label37.Text = "Amount Paid";
-            // 
-            // txtAmtpaid
-            // 
-            this.txtAmtpaid.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.txtAmtpaid.Location = new System.Drawing.Point(125, 85);
-            this.txtAmtpaid.Name = "txtAmtpaid";
-            this.txtAmtpaid.Size = new System.Drawing.Size(180, 25);
-            this.txtAmtpaid.TabIndex = 26;
-            this.txtAmtpaid.Text = "0.00";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label38.Location = new System.Drawing.Point(459, 93);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(69, 17);
-            this.label38.TabIndex = 29;
-            this.label38.Text = "Pay Mode";
-            // 
-            // cbPaymode
-            // 
-            this.cbPaymode.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.cbPaymode.FormattingEnabled = true;
-            this.cbPaymode.Items.AddRange(new object[] {
-            "Guest",
-            "Customer"});
-            this.cbPaymode.Location = new System.Drawing.Point(549, 90);
-            this.cbPaymode.Name = "cbPaymode";
-            this.cbPaymode.Size = new System.Drawing.Size(175, 25);
-            this.cbPaymode.TabIndex = 32;
-            // 
-            // dpDatepaid
-            // 
-            this.dpDatepaid.Location = new System.Drawing.Point(125, 24);
-            this.dpDatepaid.Name = "dpDatepaid";
-            this.dpDatepaid.Size = new System.Drawing.Size(180, 25);
-            this.dpDatepaid.TabIndex = 32;
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label39.Location = new System.Drawing.Point(17, 30);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(66, 17);
-            this.label39.TabIndex = 33;
-            this.label39.Text = "Date Paid";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(555, 149);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(169, 21);
-            this.checkBox2.TabIndex = 32;
-            this.checkBox2.Text = "Send Confirmation Mail";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(358, 149);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(170, 21);
-            this.checkBox3.TabIndex = 34;
-            this.checkBox3.Text = "Send Confirmation SMS";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // cbSector
-            // 
-            this.cbSector.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.cbSector.FormattingEnabled = true;
-            this.cbSector.Items.AddRange(new object[] {
-            "IT",
-            "Government"});
-            this.cbSector.Location = new System.Drawing.Point(493, 118);
-            this.cbSector.Name = "cbSector";
-            this.cbSector.Size = new System.Drawing.Size(260, 25);
-            this.cbSector.TabIndex = 39;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label40.Location = new System.Drawing.Point(414, 121);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(46, 17);
-            this.label40.TabIndex = 38;
-            this.label40.Text = "Sector";
-            // 
-            // lblRoomID
-            // 
-            this.lblRoomID.AutoSize = true;
-            this.lblRoomID.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoomID.Location = new System.Drawing.Point(521, 169);
-            this.lblRoomID.Name = "lblRoomID";
-            this.lblRoomID.Size = new System.Drawing.Size(44, 17);
-            this.lblRoomID.TabIndex = 36;
-            this.lblRoomID.Text = "Room";
-            this.lblRoomID.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // frmRoomReservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1087,18 +1087,18 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numupguestid)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numReservationid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbchild)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbadult)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numReservationid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numupguestid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

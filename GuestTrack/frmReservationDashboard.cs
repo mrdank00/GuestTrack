@@ -27,6 +27,9 @@ namespace GuestTrack
 
         private void frmReservationDashboard_Load(object sender, EventArgs e)
         {
+            
+            
+
            //PopulateDates(dateTimePicker1.Value);
         }
         private void PopulateDates(DateTime exactDate)
@@ -38,7 +41,7 @@ namespace GuestTrack
 
             // Add date columns and populate rows
             DateTime currentDate = exactDate.AddDays(-1);
-            DateTime endDate = currentDate.AddDays(14);
+            DateTime endDate = currentDate.AddDays(20);
             int columnCount = 2; // Starting column index for dates
             foreach (Tuple<string, string> roomTuple in roomList)
             {
@@ -66,13 +69,13 @@ namespace GuestTrack
         private void HighlightDates(DateTime startDate, DateTime endDate, string roomName, string guestName, int reservid)
         {
             Reservation reservation = new Reservation();
-
-            // Find the row corresponding to the room name
-            DataGridViewRow roomRow = dataGridView1.Rows
+   
+            // Find the rows corresponding to the room name
+            IEnumerable<DataGridViewRow> roomRows = dataGridView1.Rows
                 .Cast<DataGridViewRow>()
-                .FirstOrDefault(row => row.Cells[1].Value?.ToString() == roomName);
+                .Where(row => row.Cells[1].Value?.ToString() == roomName);
 
-            if (roomRow != null)
+            foreach (DataGridViewRow roomRow in roomRows)
             {
                 endDate = endDate.AddDays(-1);
 
@@ -82,8 +85,6 @@ namespace GuestTrack
                     // Get the date from the column header text
                     DateTime columnDate = DateTime.ParseExact(dataGridView1.Columns[columnIndex].HeaderText, "ddd, dd-MMM-yy", CultureInfo.InvariantCulture);
                     DataGridViewCell cell = roomRow.Cells[columnIndex];
-                    cell.Style.BackColor = Color.White;
-                    cell.Value = "";
 
                     // Check if the date is within the specified range
                     if (columnDate >= startDate && columnDate <= endDate)
@@ -99,9 +100,26 @@ namespace GuestTrack
             }
         }
 
+        private void clearcells()
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                for (int i = 2; i < row.Cells.Count; i++)
+                {
+                    DataGridViewCell cell = row.Cells[i];
+                    cell.Style.BackColor = Color.White;
+                    cell.Value = "";
+                }
+            }
+        }
+
+
         public void LoadReservations()
         {
-          
+            clearcells();
+            Reservation reservation = new Reservation();
+            reservation.UpdateReservationArrivalStatus(4);
+
             string query = "SELECT check_in_date, check_out_date, roomname, guestname,reservation_id FROM Reservations";
 
             using (SqlConnection connection = dbManager.Guestcon())
@@ -183,7 +201,9 @@ namespace GuestTrack
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            frmRoomReservation frm = new frmRoomReservation();
+            frm.ShowDialog();
+            LoadReservations();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -304,6 +324,68 @@ namespace GuestTrack
             }
         }
 
+        private void checkInGuestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (storedCell != null)
+            {
+                // Get the content of the stored cell
+                int cellData = (int)storedCell.Tag;
+
+
+                // Get the row header value (leftmost cell value)
+                string rowHeader = storedCell.OwningRow.Cells[1].Value.ToString();
+
+                // Get the column header value
+                string columnHeader = storedCell.OwningColumn.HeaderText;
+                DateTime columnDate;
+
+                // Parse the column header as a DateTime object
+                if (DateTime.TryParseExact(columnHeader, "ddd, dd-MMM-yy", CultureInfo.InvariantCulture, DateTimeStyles.None, out columnDate))
+                {
+
+                    Reservation reservation = new Reservation();
+                    reservation.ReservationId = cellData;
+                    reservation.UpdateReservationStatus(5);
+                    LoadReservations();
+                }
+                else
+                {
+                    // Handle the case where the column header cannot be parsed as a valid DateTime
+                    //MessageBox.Show("Invalid column header format.", "Error");
+                }
+            }
+          
+        }
+
+        private void sendSMSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (storedCell != null)
+            {
+                // Get the content of the stored cell
+                int cellData = (int)storedCell.Tag;
+
+
+                // Get the row header value (leftmost cell value)
+                string rowHeader = storedCell.OwningRow.Cells[1].Value.ToString();
+
+                // Get the column header value
+                string columnHeader = storedCell.OwningColumn.HeaderText;
+                DateTime columnDate;
+
+                // Parse the column header as a DateTime object
+                if (DateTime.TryParseExact(columnHeader, "ddd, dd-MMM-yy", CultureInfo.InvariantCulture, DateTimeStyles.None, out columnDate))
+                {
+
+                    Reservation.GetReservationById(cellData);
+                    
+                }
+                else
+                {
+                    // Handle the case where the column header cannot be parsed as a valid DateTime
+                    //MessageBox.Show("Invalid column header format.", "Error");
+                }
+            }
+        }
     }
 
 }

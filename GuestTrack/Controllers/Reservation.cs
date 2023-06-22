@@ -176,6 +176,7 @@ namespace GuestTrack.Controllers
                 }
             }
 
+
             return reservationStatus;
         }
 
@@ -204,7 +205,78 @@ namespace GuestTrack.Controllers
 
             return color;
         }
+        public void UpdateReservationbal( float amt)
+        {
+            using (SqlConnection connection = dbManager.Guestcon())
+            {
+                connection.Open();
 
+                string updateQuery = "UPDATE Reservations SET  balance =balance + @amt WHERE reservation_id = @ReservationId";
+
+                using (SqlCommand command = new SqlCommand(updateQuery, connection))
+                {
+
+                    command.Parameters.AddWithValue("@amt", amt);
+                    command.Parameters.AddWithValue("@ReservationId", ReservationId);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public void UpdateReservationStatus(int status)
+        {
+            using (SqlConnection connection = dbManager.Guestcon())
+            {
+                connection.Open();
+
+                string updateQuery = "UPDATE Reservations SET  status = @status WHERE reservation_id = @ReservationId";
+
+                using (SqlCommand command = new SqlCommand(updateQuery, connection))
+                {
+                   
+                    command.Parameters.AddWithValue("@status", status);
+                    command.Parameters.AddWithValue("@ReservationId", ReservationId);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public void UpdateReservationArrivalStatus(int status)
+        {
+            using (SqlConnection connection = dbManager.Guestcon())
+            {
+                connection.Open();
+
+                string updateQuery = "UPDATE Reservations SET  status = @status WHERE convert(date,check_in_date)=convert(date,getdate()) and status<>5";
+
+                using (SqlCommand command = new SqlCommand(updateQuery, connection))
+                {
+
+                    command.Parameters.AddWithValue("@status", status);
+                    command.Parameters.AddWithValue("@ReservationId", ReservationId);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        
+        public void Checkin(int status)
+        {
+            using (SqlConnection connection = dbManager.Guestcon())
+            {
+                connection.Open();
+
+                string updateQuery = "UPDATE Reservations SET  status = @status WHERE convert(date,check_in_date)=convert(date,getdate()) and status<>5";
+
+                using (SqlCommand command = new SqlCommand(updateQuery, connection))
+                {
+
+                    command.Parameters.AddWithValue("@status", status);
+                    command.Parameters.AddWithValue("@ReservationId", ReservationId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
         // Additional properties
 
     }

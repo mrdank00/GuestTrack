@@ -62,8 +62,6 @@ namespace GuestTrack
                        
                         guest();
                         reserve();
-                        booking();
-                      
                         Account();
                     }
                     catch (Exception ex)
@@ -133,10 +131,26 @@ namespace GuestTrack
             reservation.GuestName = guestName;
             reservation.Adult = adult;
             reservation.Children = children;
-            reservation.status = children;
+            if (dpCheckin.Value == DateTime.Now)
+            {
+                reservation.status = 4;
+            }
+            else
+            {
+                if (checkBox1.Checked)
+                {
+                    reservation.status = 1;
+                }
+                else
+                {
+                    reservation.status = 8;
+                }
 
+            }
             reservation.InsertReservation();
-           
+            reservation.UpdateReservationbal((float.Parse(lblRoomrate.Text)));
+            reservation.UpdateReservationbal(-(float.Parse( txtAmtpaid.Text)));
+        
         }
         private void booking()
         {
@@ -159,6 +173,7 @@ namespace GuestTrack
             account.Source = "FrontDesk";
             account.Quantity= 1;
             account.GuestId= int.Parse(numupguestid.Value.ToString());
+            account.reservationid= int.Parse(numReservationid.Value.ToString());
             account.Price= double.Parse(lblRoomrate.Text);
             account.datepaid= dpDatepaid.Value;
             account.Date= dpDatepaid.Value;
@@ -167,14 +182,14 @@ namespace GuestTrack
 
             account.Category = "Accomodation";
             account.Paymenttype = "Booking Payment";
-            account.Narration = "Payment for reservation for room " + cbroomname.Text;
+            account.Narration = "Payment for reservation No" + numReservationid.Value;
             account.activeuser =  cbGuestName.Text;
             account.Saletype = "Guest Sale";
             account.Category = "Accomodation";
             account.Amountpaid = double.Parse(txtAmtpaid.Text);
             account.Reference = numReservationid.Text;
             account.TransactionType = "Accomodation";
-            account.TransactionDescription = "Room Booking for Room:"+cbroomname.Text;
+            account.TransactionDescription = "Room Booking for Reservation:" + numReservationid.Value;
             account.Debit = txtRate.Text;
             account.Credit = double.Parse(txtAmtpaid.Text); 
            // Balance = balance;
@@ -207,6 +222,9 @@ namespace GuestTrack
         }
         private void display()
         {
+            DateTime tomorrow = DateTime.Today.AddDays(1);
+            dpCheckOut.Value = tomorrow;
+
             dbManager.LoadComboBoxValues("select * from roomtypes", cbroomtype, "name");
             numReservationid.Value = Reservation.GetNextReservationId();
 

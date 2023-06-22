@@ -88,9 +88,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(446, 56);
+            this.button1.Location = new System.Drawing.Point(429, 54);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(75, 25);
             this.button1.TabIndex = 9;
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
@@ -108,6 +108,7 @@
             this.Name = "frmGuestProfiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmGuestProfiles";
+            this.Load += new System.EventHandler(this.frmGuestProfiles_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

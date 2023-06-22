@@ -109,7 +109,7 @@ namespace GuestTrack.Controllers
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                           MessageBox.Show("Account entry inserted successfully.");
+                           MessageBox.Show("Ledger inserted successfully.");
                         }
                     }
                     catch (Exception ex)
@@ -147,7 +147,7 @@ namespace GuestTrack.Controllers
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error: " + ex.ToString());
+                        //MessageBox.Show("Error: " + ex.ToString());
                     }
                 }
             }

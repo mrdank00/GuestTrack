@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace GuestTrack
 {
-    public partial class frmGuestProfiles : Form
+    public partial class frmSendGuestSMS : Form
     {
-        public frmGuestProfiles()
+        public frmSendGuestSMS()
         {
             InitializeComponent();
-        }
-
-        private void frmGuestProfiles_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
